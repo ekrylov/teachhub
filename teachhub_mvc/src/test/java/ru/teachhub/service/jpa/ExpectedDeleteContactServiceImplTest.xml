@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<Role ID="1" TITLE="admin" PRIVILEGE="11111111" />
+	<Role ID="2" TITLE="teacher" PRIVILEGE="11110000" />
+	<Role ID="3" TITLE="student" PRIVILEGE="00000000" />
+
+	<CONTACT_GROUP ID="1" TITLE="admins" />
+	<CONTACT_GROUP ID="2" TITLE="teachers" />
+
+	<Contact ID="1" FIRST_NAME="Elena" LAST_NAME="Krylova"
+		PASSWORD="pass2" EMAIL="ekrylova@teachhub.ru" ROLE_ID="2" GROUP_ID="2" />
+</dataset>

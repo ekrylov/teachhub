@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<Role ID="1" TITLE="admin" PRIVILEGE="11111111" />
+	<Role ID="2" TITLE="teacher" PRIVILEGE="11110000" />
+	<Role ID="3" TITLE="student" PRIVILEGE="00000000" />
+
+	<CONTACT_GROUP ID="1" TITLE="admins" />
+	<CONTACT_GROUP ID="2" TITLE="teachers" />
+
+	<!-- UNIT ID="1" TITLE="Chukchi" />
+
+	<TASK ID="1" TITLE="Present Simple" />
+
+	<TAG ID="1" TITLE="grammar" />
+
+	<TASK_TAG TASK_ID="1" TAG_ID="1" />
+
+	<UNIT_TASK UNIT_ID="1" TASK_ID="1" /-->
+
+	<Contact ID="1" FIRST_NAME="Eugene" LAST_NAME="Krylov"
+		PASSWORD="pass1" EMAIL="ekrylov@teachhub.ru" ROLE_ID="1" GROUP_ID="1" />
+	<Contact ID="2" FIRST_NAME="Elena" LAST_NAME="Krylova"
+		PASSWORD="pass2" EMAIL="ekrylova@teachhub.ru" ROLE_ID="2" GROUP_ID="2" />
+
+	<!-- ASSIGNMENT CONTACT_ID="1" TASK_ID="1" />
+	<ASSIGNMENT CONTACT_ID="2" TASK_ID="1" /-->
+</dataset>
