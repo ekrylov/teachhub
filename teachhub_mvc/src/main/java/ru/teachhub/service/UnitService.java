@@ -7,6 +7,8 @@ import ru.teachhub.domain.Unit;
 public interface UnitService {
 
 	List<Unit> findAll();
+	
+	Unit findById(Long id);
 
 	List<Unit> findByTitle(String title);
 

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -72,7 +73,8 @@ public class Unit implements Serializable {
 		this.description = description;
 	}
 
-	@ManyToMany
+	// TODO: make loading is lazy but figure out how to avoid closing session
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name = "UNIT_TASK", joinColumns = @JoinColumn(name = "UNIT_ID"), inverseJoinColumns = @JoinColumn(name = "TASK_ID"))
 	public Set<Task> getTasks() {
 		return tasks;

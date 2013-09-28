@@ -9,19 +9,41 @@
 	<jsp:output omit-xml-declaration="yes" />
 	
 	<spring:message code="label_core_lessons" var="labelCoreLessons"/>
+	<spring:message code="bnt_change_level" var="bntChangeLevel"/>
+	<spring:message code="label_recommended_lesson" var="labelRecommendedLesson"/>
+	<spring:message code="bnt_start_lesson" var="bntStartLesson"/>
+	
 	<spring:url value="/lesson" var="showLessonUrl"/>
 	
-	<h4>${labelCoreLessons}</h4>
-	
-	<a href="#" class="btn">Button</a>
-	
-	<div class="list-group">
-		<c:forEach items="${lessons}" var="lesson">
-			<a href="${showLessonUrl}/${lesson.id}" class="list-group-item">
-				<h4 class="list-group-item-heading">${lesson.title}</h4>
-				<p class="list-group-item-text">${lesson.description}</p>
-			</a>
-		</c:forEach>
-	</div>
+	<div class="container">
+		<div class="row">
+			<div class="span6">
+				<h4>${labelCoreLessons}</h4>
+				<a href="#" class="btn btn-primary">${bntChangeLevel}</a>
+				<div class="hero-unit">
+					<div class="list-group">
+						<c:forEach items="${lessons}" var="lesson">
+							<a href="${showLessonUrl}/${lesson.id}" class="list-group-item">
+								<h4 class="list-group-item-heading">${lesson.title}</h4>
+								<p class="list-group-item-text">${lesson.description}</p>
+							</a>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+			<div class="span6">
+				<h4>${labelRecommendedLesson}</h4>
+				<a href="#" class="btn btn-primary">${bntStartLesson}</a>
+				<div class="hero-unit">
+					<div class="list-group">
+						<a href="${showLessonUrl}/${recommendedLesson.id}" class="list-group-item">
+							<h4 class="list-group-item-heading">${recommendedLesson.title}</h4>
+							<p class="list-group-item-text">${recommendedLesson.description}</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
 		
 </div>

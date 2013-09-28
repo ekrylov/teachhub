@@ -29,6 +29,12 @@ public class UnitServiceImpl implements UnitService {
 
 	@Override
 	@Transactional(readOnly = true)
+	public Unit findById(Long id) {
+		return unitRepository.findOne(id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
 	public List<Unit> findByTitle(String title) {
 		return unitRepository.findByTitle(title);
 	}
