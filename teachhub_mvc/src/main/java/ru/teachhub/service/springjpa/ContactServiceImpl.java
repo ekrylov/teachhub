@@ -46,6 +46,12 @@ public class ContactServiceImpl implements ContactService {
 	public List<Contact> findByRole(Role role) {
 		return contactRepository.findByRole(role);
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Contact findById(Long id) {
+		return contactRepository.findOne(id);
+	}
 
 	@Override
 	public void save(Contact contact) {

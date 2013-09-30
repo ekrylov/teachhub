@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +23,9 @@ public class Task implements Serializable {
 
 	private Long id;
 	private String title;
-	private Set<Unit> units = new HashSet<Unit>();
+	private String description;
+	private Set<UnitTask> unitTasks = new HashSet<UnitTask>();
 	private Set<Tag> tags = new HashSet<Tag>();
-	private Set<Contact> contacts = new HashSet<Contact>();
 
 	public Task() {
 	}
@@ -53,14 +54,22 @@ public class Task implements Serializable {
 		this.title = title;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "UNIT_TASK", joinColumns = @JoinColumn(name = "TASK_ID"), inverseJoinColumns = @JoinColumn(name = "UNIT_ID"))
-	public Set<Unit> getUnits() {
-		return units;
+	@Column(name = "DESCRIPTION")
+	public String getDescription() {
+		return description;
 	}
 
-	public void setUnits(Set<Unit> units) {
-		this.units = units;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@OneToMany(mappedBy = "task")
+	public Set<UnitTask> getUnitTasks() {
+		return unitTasks;
+	}
+
+	public void setUnitTasks(Set<UnitTask> unitTasks) {
+		this.unitTasks = unitTasks;
 	}
 
 	@ManyToMany
@@ -71,16 +80,6 @@ public class Task implements Serializable {
 
 	public void setTags(Set<Tag> tags) {
 		this.tags = tags;
-	}
-
-	@ManyToMany
-	@JoinTable(name = "ASSIGNMENT", joinColumns = @JoinColumn(name = "TASK_ID"), inverseJoinColumns = @JoinColumn(name = "CONTACT_ID"))
-	public Set<Contact> getContacts() {
-		return contacts;
-	}
-
-	public void setContacts(Set<Contact> contacts) {
-		this.contacts = contacts;
 	}
 
 }

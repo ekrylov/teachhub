@@ -7,13 +7,13 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -31,7 +31,7 @@ public class Contact implements Serializable {
 	private String email;
 	private Role role;
 	private Group group;
-	private Set<Task> tasks = new HashSet<Task>();
+	private Set<Assignment> assignment = new HashSet<Assignment>();
 
 	public Contact() {
 	}
@@ -113,14 +113,13 @@ public class Contact implements Serializable {
 		this.group = group;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "ASSIGNMENT", joinColumns = @JoinColumn(name = "CONTACT_ID"), inverseJoinColumns = @JoinColumn(name = "TASK_ID"))
-	public Set<Task> getTasks() {
-		return tasks;
+	@OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
+	public Set<Assignment> getAssignment() {
+		return assignment;
 	}
 
-	public void setTasks(Set<Task> tasks) {
-		this.tasks = tasks;
+	public void setAssignment(Set<Assignment> assignment) {
+		this.assignment = assignment;
 	}
 
 	@Override

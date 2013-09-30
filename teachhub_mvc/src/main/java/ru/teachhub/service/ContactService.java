@@ -15,6 +15,8 @@ public interface ContactService {
 	
 	List<Contact> findByRole(Role role);
 	
+	Contact findById(Long id);
+	
 	void save(Contact contact);
 	
 	void delete(Contact contact);

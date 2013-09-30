@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <div id="header" xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:spring="http://www.springframework.org/tags" 
-	xmlns:sec="http://www.springframework.org/security/tags" 
 	version="2.0">
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
@@ -12,11 +11,15 @@
 	<spring:message code="tab_teachers_help" var="tabTeachersHelp"/>
 	<spring:message code="tab_project" var="tabProject"/>
 	
-	<ul class="nav nav-pills">
-	  <li class="active"><a href="#" data-toggle="tab">${tabMyLessons}</a></li>
-	  <li><a href="#" data-toggle="tab">${tabMyAims}</a></li>
-	  <li><a href="#" data-toggle="tab">${tabMyProgressResults}</a></li>
-	  <li><a href="#" data-toggle="tab">${tabTeachersHelp}</a></li>
-	  <li><a href="#" data-toggle="tab">${tabProject}</a></li>
-	</ul>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<ul class="nav nav-pills">
+			  <li class="active"><a href="#" data-toggle="tab">${tabMyLessons}</a></li>
+			  <li><a href="#" data-toggle="tab">${tabMyAims}</a></li>
+			  <li><a href="#" data-toggle="tab">${tabMyProgressResults}</a></li>
+			  <li><a href="#" data-toggle="tab">${tabTeachersHelp}</a></li>
+			  <li><a href="#" data-toggle="tab">${tabProject}</a></li>
+			</ul>
+		</div>
+	</div>
 </div>

@@ -6,13 +6,10 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,13 +21,13 @@ public class Unit implements Serializable {
 	private Long id;
 	private String title;
 	private String description;
-	private Set<Task> tasks = new HashSet<Task>();
+	private Set<UnitTask> unitTasks = new HashSet<UnitTask>();
 
 	public Unit() {
 	}
-	
-	public Unit(Long id, String title, String description, Set<Task> tasks) {
-		this(title, description, tasks);
+
+	public Unit(Long id, String title, String description) {
+		this(title, description);
 		this.id = id;
 	}
 
@@ -38,12 +35,11 @@ public class Unit implements Serializable {
 		this.title = title;
 	}
 
-	public Unit(String title, String description, Set<Task> tasks) {
+	public Unit(String title, String description) {
 		this.title = title;
 		this.description = description;
-		this.tasks = tasks;
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -63,7 +59,7 @@ public class Unit implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	@Column(name = "DESCRIPTION")
 	public String getDescription() {
 		return description;
@@ -73,15 +69,13 @@ public class Unit implements Serializable {
 		this.description = description;
 	}
 
-	// TODO: make loading is lazy but figure out how to avoid closing session
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name = "UNIT_TASK", joinColumns = @JoinColumn(name = "UNIT_ID"), inverseJoinColumns = @JoinColumn(name = "TASK_ID"))
-	public Set<Task> getTasks() {
-		return tasks;
+	@OneToMany(mappedBy = "unit")
+	public Set<UnitTask> getUnitTasks() {
+		return unitTasks;
 	}
 
-	public void setTasks(Set<Task> tasks) {
-		this.tasks = tasks;
+	public void setUnitTasks(Set<UnitTask> unitTasks) {
+		this.unitTasks = unitTasks;
 	}
 
 }
