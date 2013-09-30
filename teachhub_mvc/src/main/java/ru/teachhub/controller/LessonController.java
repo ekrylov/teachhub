@@ -1,6 +1,8 @@
 package ru.teachhub.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ru.teachhub.domain.Assignment;
 import ru.teachhub.domain.Contact;
 import ru.teachhub.domain.Unit;
+import ru.teachhub.domain.UnitTask;
+import ru.teachhub.service.AssignmentService;
 import ru.teachhub.service.ContactService;
 import ru.teachhub.service.UnitService;
 
@@ -27,14 +31,17 @@ public class LessonController {
 
 	@Autowired
 	private UnitService unitService;
-	
+
 	@Autowired
 	private ContactService contactService;
+
+	@Autowired
+	private AssignmentService assignmentService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String lessons(Model uiModel) {
 		logger.info("Listing lessons");
-		
+
 		Contact contact = contactService.findById(1L);
 		Set<Unit> lessons = new HashSet<Unit>();
 		Unit recommendedLesson = null;
@@ -44,9 +51,7 @@ public class LessonController {
 				recommendedLesson = assignment.getUnitTask().getUnit();
 			}
 		}
-		
-		
-		//List<Unit> lessons = unitService.findAll();
+
 		uiModel.addAttribute("lessons", lessons);
 		uiModel.addAttribute("recommendedLesson", recommendedLesson);
 
@@ -59,12 +64,13 @@ public class LessonController {
 	public String showLessonDetails(@PathVariable("id") Long id, Model uiModel) {
 		logger.info("Lesson details");
 
-//		Unit lesson = unitService.findById(id);
-//		Set<Task> tasks = lesson.getTasks();
-//		for (Task task : tasks) {
-//			System.out.println(task.getTitle());
-//		}
-//		uiModel.addAttribute("lesson", lesson);
+		Unit unit = unitService.findById(id);
+		Contact contact = contactService.findById(1L);
+
+		List<Assignment> assignments = assignmentService
+				.findByContactAndUnitTaskUnit(contact, unit);
+
+		uiModel.addAttribute("assignments", assignments);
 
 		return "lesson/student_lesson_details";
 	}
