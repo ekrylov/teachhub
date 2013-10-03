@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +24,7 @@ public class Assignment implements Serializable {
 	private Contact contact;
 	private UnitTask unitTask;
 
-	private int status;
+	private TaskStatus taskStatus;
 	private int mark;
 
 	public Assignment() {
@@ -61,12 +63,13 @@ public class Assignment implements Serializable {
 	}
 
 	@Column(name = "STATUS")
-	public int getStatus() {
-		return status;
+	@Enumerated(EnumType.STRING)
+	public TaskStatus getTaskStatus() {
+		return taskStatus;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setTaskStatus(TaskStatus taskStatus) {
+		this.taskStatus = taskStatus;
 	}
 
 	@Column(name = "MARK")

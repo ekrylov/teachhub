@@ -16,7 +16,9 @@
 				<div class="hero-unit">
 					<div class="list-group">
 						<c:forEach items="${assignments}" var="assignment">
-							<h4 class="list-group-item-heading">${assignment.status}</h4>
+							<c:if test="${assignment.taskStatus == 'RUNNING'}">
+								<h4 class="list-group-item-heading">${assignment.taskStatus}</h4>
+							</c:if>
 							<!-- a href="${showTaskUrl}/${task.id}" class="list-group-item">
 								<p class="list-group-item-text">${task.description}</p>
 							</a-->

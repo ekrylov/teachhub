@@ -27,10 +27,10 @@ insert into unit_task (UNIT_ID, TASK_ID) values (2, 5);
 insert into unit_task (UNIT_ID, TASK_ID) values (2, 6);
 
 insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 1, 0, 0);
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 2, 0, 0);
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 3, 0, 0);
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 4, 0, 0);
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 2, 1, 0);
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 3, 2, 0);
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 4, 3, 0);
 insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 5, 0, 0);
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 6, 0, 0);
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 7, 0, 0);
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 8, 0, 0);
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 6, 1, 0);
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 7, 2, 0);
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK) values (1, 8, 3, 0);
