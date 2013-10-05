@@ -22,7 +22,7 @@
 				<div class="hero-unit">
 					<div class="list-group">
 						<c:forEach items="${lessons}" var="lesson">
-							<a href="${showLessonUrl}/${lesson.id}" class="list-group-item">
+							<a href="${showLessonUrl}/${lesson.id}">
 								<h4 class="list-group-item-heading">${lesson.title}</h4>
 								<p class="list-group-item-text">${lesson.description}</p>
 							</a>

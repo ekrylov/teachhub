@@ -11,20 +11,23 @@
 	
 	<div id="body" class="container">
 		<div class="row">
-			<div class="span6">
-				<h4>${lesson.title}</h4>
-				<div class="hero-unit">
-					<div class="list-group">
-						<c:forEach items="${assignments}" var="assignment">
-							<c:if test="${assignment.taskStatus == 'RUNNING'}">
-								<h4 class="list-group-item-heading">${assignment.taskStatus}</h4>
-							</c:if>
-							<!-- a href="${showTaskUrl}/${task.id}" class="list-group-item">
-								<p class="list-group-item-text">${task.description}</p>
-							</a-->
-						</c:forEach>
-					</div>
-				</div>
+			<div class="span12">
+				<c:choose>
+					<c:when test="${not empty assignments}">
+						<h4>${assignments[0].unitTask.unit.title}</h4>
+						<div class="hero-unit">
+							<c:forEach items="${assignments}" var="assignment">
+								<p>
+								${assignment.unitTask.task.title}
+								${assignment.taskStatus.title}
+								${assignment.mark}
+								</p>
+							</c:forEach>
+						</div>
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

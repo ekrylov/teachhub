@@ -2,8 +2,6 @@ package ru.teachhub.test.config;
 
 import javax.sql.DataSource;
 
-import org.dbunit.DataSourceDatabaseTester;
-import org.dbunit.util.fileloader.XlsDataFileLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

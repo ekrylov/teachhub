@@ -1,6 +1,5 @@
 package ru.teachhub.controller;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ru.teachhub.domain.Assignment;
 import ru.teachhub.domain.Contact;
 import ru.teachhub.domain.Unit;
-import ru.teachhub.domain.UnitTask;
 import ru.teachhub.service.AssignmentService;
 import ru.teachhub.service.ContactService;
 import ru.teachhub.service.UnitService;
