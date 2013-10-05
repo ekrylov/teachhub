@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" 
-     xmlns:c="http://java.sun.com/jsp/jstl/core" 
-     xmlns:spring="http://www.springframework.org/tags"    
-     version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0">
 
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
-	
-	<spring:message code="label_core_lessons" var="labelCoreLessons"/>
-	<spring:message code="bnt_change_level" var="bntChangeLevel"/>
-	<spring:message code="label_recommended_lesson" var="labelRecommendedLesson"/>
-	<spring:message code="bnt_start_lesson" var="bntStartLesson"/>
-	
-	<spring:url value="/lesson" var="showLessonUrl"/>
-	
+
+	<spring:message code="label_core_lessons" var="labelCoreLessons" />
+	<spring:message code="bnt_change_level" var="bntChangeLevel" />
+	<spring:message code="label_recommended_lesson"
+		var="labelRecommendedLesson" />
+	<spring:message code="bnt_start_lesson" var="bntStartLesson" />
+
+	<spring:url value="/lesson" var="showLessonUrl" />
+
 	<div id="body" class="container">
 		<div class="row">
 			<div class="span6">
@@ -23,8 +23,8 @@
 					<div class="list-group">
 						<c:forEach items="${lessons}" var="lesson">
 							<a href="${showLessonUrl}/${lesson.id}">
-								<h4 class="list-group-item-heading">${lesson.title}</h4>
-								<p class="list-group-item-text">${lesson.description}</p>
+								<h4>${lesson.title}</h4>
+								<p>${lesson.description}</p>
 							</a>
 						</c:forEach>
 					</div>
@@ -35,7 +35,8 @@
 				<a href="#" class="btn btn-primary">${bntStartLesson}</a>
 				<div class="hero-unit">
 					<div class="list-group">
-						<a href="${showLessonUrl}/${recommendedLesson.id}" class="list-group-item">
+						<a href="${showLessonUrl}/${recommendedLesson.id}"
+							class="list-group-item">
 							<h4 class="list-group-item-heading">${recommendedLesson.title}</h4>
 							<p class="list-group-item-text">${recommendedLesson.description}</p>
 						</a>
@@ -43,5 +44,5 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
 </div>

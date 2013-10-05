@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" 
-     xmlns:c="http://java.sun.com/jsp/jstl/core" 
-     xmlns:spring="http://www.springframework.org/tags"    
-     version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0">
 
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
-	
-	<spring:url value="/task" var="showTaskUrl"/>
-	
+
+	<spring:url value="/task" var="showTaskUrl" />
+
 	<div id="body" class="container">
 		<div class="row">
 			<div class="span12">
@@ -17,11 +16,9 @@
 						<h4>${assignments[0].unitTask.unit.title}</h4>
 						<div class="hero-unit">
 							<c:forEach items="${assignments}" var="assignment">
-								<p>
-								${assignment.unitTask.task.title}
-								${assignment.taskStatus.title}
-								${assignment.mark}
-								</p>
+								<a href="${showTaskUrl}/${assignment.id}">
+									<h4>${assignment.unitTask.task.title}</h4>
+								</a>
 							</c:forEach>
 						</div>
 					</c:when>

@@ -18,4 +18,6 @@ public interface AssignmentService
 
     List<Assignment> findByContactAndUnitTaskUnit( Contact contact, Unit unit );
 
+    Assignment findById( Long id );
+
 }

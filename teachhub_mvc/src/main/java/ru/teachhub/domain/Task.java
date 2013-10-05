@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,8 @@ public class Task
     private static final long serialVersionUID = 1543497734083747424L;
 
     private Long id;
+
+    private TaskContent taskContent;
 
     private String title;
 
@@ -53,6 +57,18 @@ public class Task
     public void setId( Long id )
     {
         this.id = id;
+    }
+
+    @OneToOne( fetch = FetchType.EAGER )
+    @JoinColumn( name = "ID" )
+    public TaskContent getTaskContent()
+    {
+        return taskContent;
+    }
+
+    public void setTaskContent( TaskContent taskContent )
+    {
+        this.taskContent = taskContent;
     }
 
     @Column( name = "TITLE" )

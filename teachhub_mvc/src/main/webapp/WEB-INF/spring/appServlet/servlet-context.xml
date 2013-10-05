@@ -34,7 +34,6 @@
 		id="tilesConfigurer">
 		<beans:property name="definitions">
 			<beans:list>
-				<!-- beans:value>/WEB-INF/layouts/layouts.xml</beans:value-->
 				<beans:value>/WEB-INF/layouts/student_layout.xml</beans:value>
 				<!-- Scan views directory for Tiles configurations -->
 				<beans:value>/WEB-INF/views/**/views.xml</beans:value>

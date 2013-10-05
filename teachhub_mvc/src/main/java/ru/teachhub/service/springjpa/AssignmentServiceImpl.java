@@ -52,4 +52,11 @@ public class AssignmentServiceImpl
         return assignmentRepository.findByContactAndUnitTaskUnit( contact, unit );
     }
 
+    @Override
+    @Transactional( readOnly = true )
+    public Assignment findById( Long id )
+    {
+        return assignmentRepository.findOne( id );
+    }
+
 }
