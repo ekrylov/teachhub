@@ -15,50 +15,62 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tag")
-public class Tag implements Serializable {
+@Table( name = "tag" )
+public class Tag
+    implements Serializable
+{
 
-	private static final long serialVersionUID = 3800249089818820710L;
+    private static final long serialVersionUID = 3800249089818820710L;
 
-	private Long id;
-	private String title;
-	private Set<Task> tasks = new HashSet<Task>();
+    private Long id;
 
-	public Tag() {
-	}
+    private String title;
 
-	public Tag(String title) {
-		this.title = title;
-	}
+    private Set<Task> tasks = new HashSet<Task>();
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	public Long getId() {
-		return id;
-	}
+    public Tag()
+    {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Tag( String title )
+    {
+        this.title = title;
+    }
 
-	@Column(name = "TITLE")
-	public String getTitle() {
-		return title;
-	}
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column( name = "ID" )
+    public Long getId()
+    {
+        return id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setId( Long id )
+    {
+        this.id = id;
+    }
 
-	@ManyToMany
-	@JoinTable(name = "TASK_TAG", joinColumns = @JoinColumn(name = "TAG_ID"), inverseJoinColumns = @JoinColumn(name = "TASK_ID"))
-	public Set<Task> getTasks() {
-		return tasks;
-	}
+    @Column( name = "TITLE" )
+    public String getTitle()
+    {
+        return title;
+    }
 
-	public void setTasks(Set<Task> tasks) {
-		this.tasks = tasks;
-	}
+    public void setTitle( String title )
+    {
+        this.title = title;
+    }
+
+    @ManyToMany
+    @JoinTable( name = "TASK_TAG", joinColumns = @JoinColumn( name = "TAG_ID" ), inverseJoinColumns = @JoinColumn( name = "TASK_ID" ) )
+    public Set<Task> getTasks()
+    {
+        return tasks;
+    }
+
+    public void setTasks( Set<Task> tasks )
+    {
+        this.tasks = tasks;
+    }
 
 }

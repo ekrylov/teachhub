@@ -13,24 +13,28 @@ import ru.teachhub.domain.Role;
 import ru.teachhub.repository.RoleRepository;
 import ru.teachhub.service.RoleService;
 
-@Service("springJpaRoleService")
+@Service( "springJpaRoleService" )
 @Repository
 @Transactional
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl
+    implements RoleService
+{
 
-	@Autowired
-	private RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Role> findAll() {
-		return Lists.newArrayList(roleRepository.findAll());
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Role> findAll()
+    {
+        return Lists.newArrayList( roleRepository.findAll() );
+    }
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Role> findByTitle(String title) {
-		return roleRepository.findByTitle(title);
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Role> findByTitle( String title )
+    {
+        return roleRepository.findByTitle( title );
+    }
 
 }

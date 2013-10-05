@@ -16,68 +16,84 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 @Entity
-@Table(name = "CONTACT_GROUP")
-public class Group implements Serializable {
+@Table( name = "CONTACT_GROUP" )
+public class Group
+    implements Serializable
+{
 
-	private static final long serialVersionUID = 8046597029431170197L;
+    private static final long serialVersionUID = 8046597029431170197L;
 
-	private Long id;
-	private String title;
-	private Set<Contact> contacts = new HashSet<Contact>();
+    private Long id;
 
-	public Group() {
-	}
+    private String title;
 
-	public Group(String title) {
-		this.title = title;
-	}
+    private Set<Contact> contacts = new HashSet<Contact>();
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	public Long getId() {
-		return id;
-	}
+    public Group()
+    {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Group( String title )
+    {
+        this.title = title;
+    }
 
-	@Column(name = "TITLE")
-	public String getTitle() {
-		return title;
-	}
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column( name = "ID" )
+    public Long getId()
+    {
+        return id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setId( Long id )
+    {
+        this.id = id;
+    }
 
-	@OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
-	public Set<Contact> getContacts() {
-		return contacts;
-	}
+    @Column( name = "TITLE" )
+    public String getTitle()
+    {
+        return title;
+    }
 
-	public void setContacts(Set<Contact> contacts) {
-		this.contacts = contacts;
-	}
+    public void setTitle( String title )
+    {
+        this.title = title;
+    }
 
-	@Override
-	public String toString() {
-		return "Group Id: " + id + ", title: " + title;
-	}
+    @OneToMany( mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true )
+    public Set<Contact> getContacts()
+    {
+        return contacts;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (!(obj instanceof Role)) {
-			return false;
-		}
+    public void setContacts( Set<Contact> contacts )
+    {
+        this.contacts = contacts;
+    }
 
-		if (this == obj) {
-			return true;
-		}
+    @Override
+    public String toString()
+    {
+        return "Group Id: " + id + ", title: " + title;
+    }
 
-		Group otherRole = (Group) obj;
-		return new EqualsBuilder().append(title, otherRole.title).isEquals();
-	}
+    @Override
+    public boolean equals( Object obj )
+    {
+        if ( !( obj instanceof Role ) )
+        {
+            return false;
+        }
+
+        if ( this == obj )
+        {
+            return true;
+        }
+
+        Group otherRole = (Group) obj;
+        return new EqualsBuilder().append( title, otherRole.title ).isEquals();
+    }
 
 }

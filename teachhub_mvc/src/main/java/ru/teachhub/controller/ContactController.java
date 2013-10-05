@@ -17,33 +17,35 @@ import ru.teachhub.domain.Group;
 import ru.teachhub.domain.Role;
 import ru.teachhub.service.ContactService;
 
-@RequestMapping("/contacts")
+@RequestMapping( "/contacts" )
 @Controller
-public class ContactController {
+public class ContactController
+{
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(ContactController.class);
+    private static final Logger logger = LoggerFactory.getLogger( ContactController.class );
 
-	@Autowired
-	MessageSource messageSource;
+    @Autowired
+    MessageSource messageSource;
 
-	@Autowired
-	private ContactService contactService;
+    @Autowired
+    private ContactService contactService;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String list(Model uiModel) {
-		logger.info("Listing contacts");
+    @RequestMapping( method = RequestMethod.GET )
+    public String list( Model uiModel )
+    {
+        logger.info( "Listing contacts" );
 
-		List<Contact> contacts = getFakeContacts(); // contactService.findAll();
-		uiModel.addAttribute("contacts", contacts);
+        List<Contact> contacts = getFakeContacts(); // contactService.findAll();
+        uiModel.addAttribute( "contacts", contacts );
 
-		logger.info("No. of contacts: " + contacts.size());
+        logger.info( "No. of contacts: " + contacts.size() );
 
-		return "contacts/list";
-	}
+        return "contacts/list";
+    }
 
-	private List<Contact> getFakeContacts() {
-		return Collections.singletonList(new Contact("Eugene", "Krylov",
-				"krylloff", "kryll@list.ru", new Role(0L), new Group("admin")));
-	}
+    private List<Contact> getFakeContacts()
+    {
+        return Collections.singletonList( new Contact( "Eugene", "Krylov", "krylloff", "kryll@list.ru", new Role( 0L ),
+                                                       new Group( "admin" ) ) );
+    }
 }

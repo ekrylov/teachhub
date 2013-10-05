@@ -14,38 +14,42 @@ import ru.teachhub.domain.UnitTask;
 import ru.teachhub.repository.AssignmentRepository;
 import ru.teachhub.service.AssignmentService;
 
-@Service("springJpaAssignmentService")
+@Service( "springJpaAssignmentService" )
 @Repository
 @Transactional
-public class AssignmentServiceImpl implements AssignmentService {
+public class AssignmentServiceImpl
+    implements AssignmentService
+{
 
-	@Autowired
-	private AssignmentRepository assignmentRepository;
+    @Autowired
+    private AssignmentRepository assignmentRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Assignment> findByContact(Contact contact) {
-		return assignmentRepository.findByContact(contact);
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Assignment> findByContact( Contact contact )
+    {
+        return assignmentRepository.findByContact( contact );
+    }
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Assignment> findByUnitTask(UnitTask unitTask) {
-		return assignmentRepository.findByUnitTask(unitTask);
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Assignment> findByUnitTask( UnitTask unitTask )
+    {
+        return assignmentRepository.findByUnitTask( unitTask );
+    }
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Assignment> findByContactAndUnitTask(Contact contact,
-			UnitTask unitTask) {
-		return assignmentRepository.findByContactAndUnitTask(contact, unitTask);
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Assignment> findByContactAndUnitTask( Contact contact, UnitTask unitTask )
+    {
+        return assignmentRepository.findByContactAndUnitTask( contact, unitTask );
+    }
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Assignment> findByContactAndUnitTaskUnit(Contact contact,
-			Unit unit) {
-		return assignmentRepository.findByContactAndUnitTaskUnit(contact, unit);
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Assignment> findByContactAndUnitTaskUnit( Contact contact, Unit unit )
+    {
+        return assignmentRepository.findByContactAndUnitTaskUnit( contact, unit );
+    }
 
 }

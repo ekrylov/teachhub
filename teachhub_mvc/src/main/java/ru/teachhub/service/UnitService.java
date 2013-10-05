@@ -4,12 +4,13 @@ import java.util.List;
 
 import ru.teachhub.domain.Unit;
 
-public interface UnitService {
+public interface UnitService
+{
 
-	List<Unit> findAll();
-	
-	Unit findById(Long id);
+    List<Unit> findAll();
 
-	List<Unit> findByTitle(String title);
+    Unit findById( Long id );
+
+    List<Unit> findByTitle( String title );
 
 }

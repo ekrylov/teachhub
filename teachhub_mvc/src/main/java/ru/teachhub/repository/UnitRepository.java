@@ -6,8 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import ru.teachhub.domain.Unit;
 
-public interface UnitRepository extends CrudRepository<Unit, Long> {
-	
-	List<Unit> findByTitle(String title);
+public interface UnitRepository
+    extends CrudRepository<Unit, Long>
+{
+
+    List<Unit> findByTitle( String title );
 
 }

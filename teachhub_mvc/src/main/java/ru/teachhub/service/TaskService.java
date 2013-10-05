@@ -4,10 +4,11 @@ import java.util.List;
 
 import ru.teachhub.domain.Task;
 
-public interface TaskService {
+public interface TaskService
+{
 
-	List<Task> findAll();
+    List<Task> findAll();
 
-	List<Task> findByTitle(String title);
+    List<Task> findByTitle( String title );
 
 }

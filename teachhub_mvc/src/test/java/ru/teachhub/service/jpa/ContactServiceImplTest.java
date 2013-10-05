@@ -17,142 +17,145 @@ import ru.teachhub.service.ContactService;
 import ru.teachhub.service.GroupService;
 import ru.teachhub.service.RoleService;
 
-public class ContactServiceImplTest extends AbstractServiceImplTest {
+public class ContactServiceImplTest
+    extends AbstractServiceImplTest
+{
 
-	@Autowired
-	private ContactService contactService;
+    @Autowired
+    private ContactService contactService;
 
-	@Autowired
-	private RoleService roleService;
+    @Autowired
+    private RoleService roleService;
 
-	@Autowired
-	private GroupService groupService;
+    @Autowired
+    private GroupService groupService;
 
-	private Contact expectedAdminContact = new Contact("Eugene", "Krylov",
-			"pass1", "ekrylov@teachhub.ru", new Role("admin", "11111111"),
-			new Group("admins"));
-	private Contact expectedTeacherContact = new Contact("Elena", "Krylova",
-			"pass2", "ekrylova@teachhub.ru", new Role("teacher", "11110000"),
-			new Group("teachers"));
+    private Contact expectedAdminContact = new Contact( "Eugene", "Krylov", "pass1", "ekrylov@teachhub.ru",
+                                                        new Role( "admin", "11111111" ), new Group( "admins" ) );
 
-	@Test
-	@DatabaseSetup("ContactServiceImplTest.xml")
-	public void findAll() throws Exception {
-		List<Contact> contacts = contactService.findAll();
+    private Contact expectedTeacherContact = new Contact( "Elena", "Krylova", "pass2", "ekrylova@teachhub.ru",
+                                                          new Role( "teacher", "11110000" ), new Group( "teachers" ) );
 
-		Assert.assertNotNull(contacts);
-		Assert.assertEquals(2, contacts.size());
+    @Test
+    @DatabaseSetup( "ContactServiceImplTest.xml" )
+    public void findAll()
+        throws Exception
+    {
+        List<Contact> contacts = contactService.findAll();
 
-		Contact adminContact = contacts.get(0);
-		Contact teacherContact = contacts.get(1);
+        Assert.assertNotNull( contacts );
+        Assert.assertEquals( 2, contacts.size() );
 
-		Assert.assertEquals(expectedAdminContact, adminContact);
-		Assert.assertEquals(expectedTeacherContact, teacherContact);
-	}
+        Contact adminContact = contacts.get( 0 );
+        Contact teacherContact = contacts.get( 1 );
 
-	@Test
-	@DatabaseSetup("ContactServiceImplTest.xml")
-	public void findByFirstNameAndLastName() throws Exception {
-		List<Contact> contacts = contactService.findByFirstNameAndLastName(
-				"Eugene", "Krylov");
+        Assert.assertEquals( expectedAdminContact, adminContact );
+        Assert.assertEquals( expectedTeacherContact, teacherContact );
+    }
 
-		Assert.assertNotNull(contacts);
-		Assert.assertEquals(1, contacts.size());
+    @Test
+    @DatabaseSetup( "ContactServiceImplTest.xml" )
+    public void findByFirstNameAndLastName()
+        throws Exception
+    {
+        List<Contact> contacts = contactService.findByFirstNameAndLastName( "Eugene", "Krylov" );
 
-		Contact adminContact = contacts.get(0);
+        Assert.assertNotNull( contacts );
+        Assert.assertEquals( 1, contacts.size() );
 
-		Assert.assertEquals(expectedAdminContact, adminContact);
-	}
+        Contact adminContact = contacts.get( 0 );
 
-	@Test
-	@DatabaseSetup("ContactServiceImplTest.xml")
-	public void findByEmail() {
-		List<Contact> contacts = contactService
-				.findByEmail("ekrylova@teachhub.ru");
+        Assert.assertEquals( expectedAdminContact, adminContact );
+    }
 
-		Assert.assertNotNull(contacts);
-		Assert.assertEquals(1, contacts.size());
+    @Test
+    @DatabaseSetup( "ContactServiceImplTest.xml" )
+    public void findByEmail()
+    {
+        List<Contact> contacts = contactService.findByEmail( "ekrylova@teachhub.ru" );
 
-		Contact teacherContact = contacts.get(0);
+        Assert.assertNotNull( contacts );
+        Assert.assertEquals( 1, contacts.size() );
 
-		Assert.assertEquals(expectedTeacherContact, teacherContact);
-	}
+        Contact teacherContact = contacts.get( 0 );
 
-	@Test
-	@DatabaseSetup("ContactServiceImplTest.xml")
-	public void findByRole() {
-		List<Contact> contacts = contactService.findByRole(new Role(1l));
+        Assert.assertEquals( expectedTeacherContact, teacherContact );
+    }
 
-		Assert.assertNotNull(contacts);
-		Assert.assertEquals(1, contacts.size());
+    @Test
+    @DatabaseSetup( "ContactServiceImplTest.xml" )
+    public void findByRole()
+    {
+        List<Contact> contacts = contactService.findByRole( new Role( 1l ) );
 
-		Contact adminContact = contacts.get(0);
+        Assert.assertNotNull( contacts );
+        Assert.assertEquals( 1, contacts.size() );
 
-		Assert.assertEquals(expectedAdminContact, adminContact);
-	}
+        Contact adminContact = contacts.get( 0 );
 
-	@Test
-	@DatabaseSetup("ContactServiceImplTest.xml")
-	public void errorFindByFirstName() {
-		List<Contact> contacts = contactService.findByFirstNameAndLastName(
-				"Eugene", null);
+        Assert.assertEquals( expectedAdminContact, adminContact );
+    }
 
-		Assert.assertNotNull(contacts);
-		Assert.assertTrue(
-				"Result set should not contain any contact because of 'null' in search query",
-				contacts.isEmpty());
-	}
+    @Test
+    @DatabaseSetup( "ContactServiceImplTest.xml" )
+    public void errorFindByFirstName()
+    {
+        List<Contact> contacts = contactService.findByFirstNameAndLastName( "Eugene", null );
 
-	@Test
-	@DatabaseSetup("ContactServiceImplTest.xml")
-	public void errorFindByLastName() {
-		List<Contact> contacts = contactService.findByFirstNameAndLastName(
-				null, "Krylov");
+        Assert.assertNotNull( contacts );
+        Assert.assertTrue( "Result set should not contain any contact because of 'null' in search query",
+                           contacts.isEmpty() );
+    }
 
-		Assert.assertNotNull(contacts);
-		Assert.assertTrue(
-				"Result set should not contain any contact because of 'null' in search query",
-				contacts.isEmpty());
-	}
+    @Test
+    @DatabaseSetup( "ContactServiceImplTest.xml" )
+    public void errorFindByLastName()
+    {
+        List<Contact> contacts = contactService.findByFirstNameAndLastName( null, "Krylov" );
 
-	@Test
-	@DatabaseSetup("ContactServiceImplTest.xml")
-	public void addContact() {
-		Role adminRole = roleService.findByTitle("admin").get(0);
-		Group adminGroup = groupService.findByTitle("admins").get(0);
-		Contact newContact = new Contact("Ivan", "Ivanov", "pass",
-				"iivanov@teachhub.ru", adminRole, adminGroup);
+        Assert.assertNotNull( contacts );
+        Assert.assertTrue( "Result set should not contain any contact because of 'null' in search query",
+                           contacts.isEmpty() );
+    }
 
-		contactService.save(newContact);
-		List<Contact> contacts = contactService.findAll();
+    @Test
+    @DatabaseSetup( "ContactServiceImplTest.xml" )
+    public void addContact()
+    {
+        Role adminRole = roleService.findByTitle( "admin" ).get( 0 );
+        Group adminGroup = groupService.findByTitle( "admins" ).get( 0 );
+        Contact newContact = new Contact( "Ivan", "Ivanov", "pass", "iivanov@teachhub.ru", adminRole, adminGroup );
 
-		Assert.assertEquals(3, contacts.size());
-		Assert.assertEquals(expectedAdminContact, contacts.get(0));
-		Assert.assertEquals(expectedTeacherContact, contacts.get(1));
-		Assert.assertEquals(newContact, contacts.get(2));
-	}
+        contactService.save( newContact );
+        List<Contact> contacts = contactService.findAll();
 
-	@Test(expected = DataIntegrityViolationException.class)
-	@DatabaseSetup("ContactServiceImplTest.xml")
-	public void error_addContactWithExistingEmail() {
-		Role adminRole = roleService.findByTitle("admin").get(0);
-		Group adminGroup = groupService.findByTitle("admins").get(0);
-		Contact newContact = new Contact("Ivan", "Ivanov", "pass",
-				"ekrylov@teachhub.ru", adminRole, adminGroup);
+        Assert.assertEquals( 3, contacts.size() );
+        Assert.assertEquals( expectedAdminContact, contacts.get( 0 ) );
+        Assert.assertEquals( expectedTeacherContact, contacts.get( 1 ) );
+        Assert.assertEquals( newContact, contacts.get( 2 ) );
+    }
 
-		contactService.save(newContact);
-	}
+    @Test( expected = DataIntegrityViolationException.class )
+    @DatabaseSetup( "ContactServiceImplTest.xml" )
+    public void error_addContactWithExistingEmail()
+    {
+        Role adminRole = roleService.findByTitle( "admin" ).get( 0 );
+        Group adminGroup = groupService.findByTitle( "admins" ).get( 0 );
+        Contact newContact = new Contact( "Ivan", "Ivanov", "pass", "ekrylov@teachhub.ru", adminRole, adminGroup );
 
-	@Test
-	@DatabaseSetup("ContactServiceImplTest.xml")
-	public void deleteContact() {
-		Contact deleteContact = contactService.findByFirstNameAndLastName(
-				"Eugene", "Krylov").get(0);
+        contactService.save( newContact );
+    }
 
-		contactService.delete(deleteContact);
-		List<Contact> contacts = contactService.findAll();
+    @Test
+    @DatabaseSetup( "ContactServiceImplTest.xml" )
+    public void deleteContact()
+    {
+        Contact deleteContact = contactService.findByFirstNameAndLastName( "Eugene", "Krylov" ).get( 0 );
 
-		Assert.assertEquals(1, contacts.size());
-		Assert.assertEquals(expectedTeacherContact, contacts.get(0));
-	}
+        contactService.delete( deleteContact );
+        List<Contact> contacts = contactService.findAll();
+
+        Assert.assertEquals( 1, contacts.size() );
+        Assert.assertEquals( expectedTeacherContact, contacts.get( 0 ) );
+    }
 }

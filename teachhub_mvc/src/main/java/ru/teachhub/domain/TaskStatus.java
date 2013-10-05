@@ -1,18 +1,20 @@
 package ru.teachhub.domain;
 
-public enum TaskStatus {
+public enum TaskStatus
+{
 
-	NOT_OPENED("not opened"), RUNNING("running"), COMPLETED("completed"), RATED(
-			"rated");
+    NOT_OPENED( "not opened" ), RUNNING( "running" ), COMPLETED( "completed" ), RATED( "rated" );
 
-	private String title;
+    private String title;
 
-	TaskStatus(String title) {
-		this.title = title;
-	}
+    TaskStatus( String title )
+    {
+        this.title = title;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getTitle()
+    {
+        return title;
+    }
 
 }

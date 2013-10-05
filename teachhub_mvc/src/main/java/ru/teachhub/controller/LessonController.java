@@ -20,56 +20,60 @@ import ru.teachhub.service.AssignmentService;
 import ru.teachhub.service.ContactService;
 import ru.teachhub.service.UnitService;
 
-@RequestMapping("/lesson")
+@RequestMapping( "/lesson" )
 @Controller
-public class LessonController {
+public class LessonController
+{
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(LessonController.class);
+    private static final Logger logger = LoggerFactory.getLogger( LessonController.class );
 
-	@Autowired
-	private UnitService unitService;
+    @Autowired
+    private UnitService unitService;
 
-	@Autowired
-	private ContactService contactService;
+    @Autowired
+    private ContactService contactService;
 
-	@Autowired
-	private AssignmentService assignmentService;
+    @Autowired
+    private AssignmentService assignmentService;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String lessons(Model uiModel) {
-		logger.info("Listing lessons");
+    @RequestMapping( method = RequestMethod.GET )
+    public String lessons( Model uiModel )
+    {
+        logger.info( "Listing lessons" );
 
-		Contact contact = contactService.findById(1L);
-		Set<Unit> lessons = new HashSet<Unit>();
-		Unit recommendedLesson = null;
-		for (Assignment assignment : contact.getAssignment()) {
-			lessons.add(assignment.getUnitTask().getUnit());
-			if (recommendedLesson == null) {
-				recommendedLesson = assignment.getUnitTask().getUnit();
-			}
-		}
+        Contact contact = contactService.findById( 1L );
+        Set<Unit> lessons = new HashSet<Unit>();
+        Unit recommendedLesson = null;
+        for ( Assignment assignment : contact.getAssignment() )
+        {
+            lessons.add( assignment.getUnitTask().getUnit() );
+            if ( recommendedLesson == null )
+            {
+                recommendedLesson = assignment.getUnitTask().getUnit();
+            }
+        }
 
-		uiModel.addAttribute("lessons", lessons);
-		uiModel.addAttribute("recommendedLesson", recommendedLesson);
+        uiModel.addAttribute( "lessons", lessons );
+        uiModel.addAttribute( "recommendedLesson", recommendedLesson );
 
-		logger.info("No. of lessons: " + lessons.size());
+        logger.info( "No. of lessons: " + lessons.size() );
 
-		return "lesson/student_lesson_list";
-	}
+        return "lesson/student_lesson_list";
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String showLessonDetails(@PathVariable("id") Long id, Model uiModel) {
-		logger.info("Lesson details");
+    @RequestMapping( value = "/{id}", method = RequestMethod.GET )
+    public String showLessonDetails( @PathVariable( "id" )
+    Long id, Model uiModel )
+    {
+        logger.info( "Lesson details" );
 
-		Unit unit = unitService.findById(id);
-		Contact contact = contactService.findById(1L);
+        Unit unit = unitService.findById( id );
+        Contact contact = contactService.findById( 1L );
 
-		List<Assignment> assignments = assignmentService
-				.findByContactAndUnitTaskUnit(contact, unit);
+        List<Assignment> assignments = assignmentService.findByContactAndUnitTaskUnit( contact, unit );
 
-		uiModel.addAttribute("assignments", assignments);
+        uiModel.addAttribute( "assignments", assignments );
 
-		return "lesson/student_lesson_details";
-	}
+        return "lesson/student_lesson_details";
+    }
 }

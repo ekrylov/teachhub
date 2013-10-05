@@ -16,70 +16,88 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "task")
-public class Task implements Serializable {
+@Table( name = "task" )
+public class Task
+    implements Serializable
+{
 
-	private static final long serialVersionUID = 1543497734083747424L;
+    private static final long serialVersionUID = 1543497734083747424L;
 
-	private Long id;
-	private String title;
-	private String description;
-	private Set<UnitTask> unitTasks = new HashSet<UnitTask>();
-	private Set<Tag> tags = new HashSet<Tag>();
+    private Long id;
 
-	public Task() {
-	}
+    private String title;
 
-	public Task(String title) {
-		this.title = title;
-	}
+    private String description;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	public Long getId() {
-		return id;
-	}
+    private Set<UnitTask> unitTasks = new HashSet<UnitTask>();
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private Set<Tag> tags = new HashSet<Tag>();
 
-	@Column(name = "TITLE")
-	public String getTitle() {
-		return title;
-	}
+    public Task()
+    {
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public Task( String title )
+    {
+        this.title = title;
+    }
 
-	@Column(name = "DESCRIPTION")
-	public String getDescription() {
-		return description;
-	}
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column( name = "ID" )
+    public Long getId()
+    {
+        return id;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setId( Long id )
+    {
+        this.id = id;
+    }
 
-	@OneToMany(mappedBy = "task")
-	public Set<UnitTask> getUnitTasks() {
-		return unitTasks;
-	}
+    @Column( name = "TITLE" )
+    public String getTitle()
+    {
+        return title;
+    }
 
-	public void setUnitTasks(Set<UnitTask> unitTasks) {
-		this.unitTasks = unitTasks;
-	}
+    public void setTitle( String title )
+    {
+        this.title = title;
+    }
 
-	@ManyToMany
-	@JoinTable(name = "TASK_TAG", joinColumns = @JoinColumn(name = "TASK_ID"), inverseJoinColumns = @JoinColumn(name = "TAG_ID"))
-	public Set<Tag> getTags() {
-		return tags;
-	}
+    @Column( name = "DESCRIPTION" )
+    public String getDescription()
+    {
+        return description;
+    }
 
-	public void setTags(Set<Tag> tags) {
-		this.tags = tags;
-	}
+    public void setDescription( String description )
+    {
+        this.description = description;
+    }
+
+    @OneToMany( mappedBy = "task" )
+    public Set<UnitTask> getUnitTasks()
+    {
+        return unitTasks;
+    }
+
+    public void setUnitTasks( Set<UnitTask> unitTasks )
+    {
+        this.unitTasks = unitTasks;
+    }
+
+    @ManyToMany
+    @JoinTable( name = "TASK_TAG", joinColumns = @JoinColumn( name = "TASK_ID" ), inverseJoinColumns = @JoinColumn( name = "TAG_ID" ) )
+    public Set<Tag> getTags()
+    {
+        return tags;
+    }
+
+    public void setTags( Set<Tag> tags )
+    {
+        this.tags = tags;
+    }
 
 }

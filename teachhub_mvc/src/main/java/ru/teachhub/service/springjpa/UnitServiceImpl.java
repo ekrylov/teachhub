@@ -13,30 +13,35 @@ import ru.teachhub.domain.Unit;
 import ru.teachhub.repository.UnitRepository;
 import ru.teachhub.service.UnitService;
 
-@Service("springJpaUnitService")
+@Service( "springJpaUnitService" )
 @Repository
 @Transactional
-public class UnitServiceImpl implements UnitService {
+public class UnitServiceImpl
+    implements UnitService
+{
 
-	@Autowired
-	private UnitRepository unitRepository;
+    @Autowired
+    private UnitRepository unitRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Unit> findAll() {
-		return Lists.newArrayList(unitRepository.findAll());
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Unit> findAll()
+    {
+        return Lists.newArrayList( unitRepository.findAll() );
+    }
 
-	@Override
-	@Transactional(readOnly = true)
-	public Unit findById(Long id) {
-		return unitRepository.findOne(id);
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public Unit findById( Long id )
+    {
+        return unitRepository.findOne( id );
+    }
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Unit> findByTitle(String title) {
-		return unitRepository.findByTitle(title);
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Unit> findByTitle( String title )
+    {
+        return unitRepository.findByTitle( title );
+    }
 
 }

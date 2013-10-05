@@ -14,71 +14,86 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "assignment")
-public class Assignment implements Serializable {
+@Table( name = "assignment" )
+public class Assignment
+    implements Serializable
+{
 
-	private static final long serialVersionUID = -4527240554939450246L;
+    private static final long serialVersionUID = -4527240554939450246L;
 
-	private Long id;
+    private Long id;
 
-	private Contact contact;
-	private UnitTask unitTask;
+    private Contact contact;
 
-	private TaskStatus taskStatus;
-	private int mark;
+    private UnitTask unitTask;
 
-	public Assignment() {
+    private TaskStatus taskStatus;
 
-	}
+    private int mark;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	public Long getId() {
-		return id;
-	}
+    public Assignment()
+    {
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    }
 
-	@ManyToOne
-	@JoinColumn(name = "CONTACT_ID", updatable = false, insertable = false)
-	public Contact getContact() {
-		return contact;
-	}
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column( name = "ID" )
+    public Long getId()
+    {
+        return id;
+    }
 
-	public void setContact(Contact contact) {
-		this.contact = contact;
-	}
+    public void setId( Long id )
+    {
+        this.id = id;
+    }
 
-	@ManyToOne
-	@JoinColumn(name = "UNIT_TASK_ID", updatable = false, insertable = false)
-	public UnitTask getUnitTask() {
-		return unitTask;
-	}
+    @ManyToOne
+    @JoinColumn( name = "CONTACT_ID", updatable = false, insertable = false )
+    public Contact getContact()
+    {
+        return contact;
+    }
 
-	public void setUnitTask(UnitTask unitTask) {
-		this.unitTask = unitTask;
-	}
+    public void setContact( Contact contact )
+    {
+        this.contact = contact;
+    }
 
-	@Column(name = "STATUS")
-	@Enumerated(EnumType.STRING)
-	public TaskStatus getTaskStatus() {
-		return taskStatus;
-	}
+    @ManyToOne
+    @JoinColumn( name = "UNIT_TASK_ID", updatable = false, insertable = false )
+    public UnitTask getUnitTask()
+    {
+        return unitTask;
+    }
 
-	public void setTaskStatus(TaskStatus taskStatus) {
-		this.taskStatus = taskStatus;
-	}
+    public void setUnitTask( UnitTask unitTask )
+    {
+        this.unitTask = unitTask;
+    }
 
-	@Column(name = "MARK")
-	public int getMark() {
-		return mark;
-	}
+    @Column( name = "STATUS" )
+    @Enumerated( EnumType.STRING )
+    public TaskStatus getTaskStatus()
+    {
+        return taskStatus;
+    }
 
-	public void setMark(int mark) {
-		this.mark = mark;
-	}
+    public void setTaskStatus( TaskStatus taskStatus )
+    {
+        this.taskStatus = taskStatus;
+    }
+
+    @Column( name = "MARK" )
+    public int getMark()
+    {
+        return mark;
+    }
+
+    public void setMark( int mark )
+    {
+        this.mark = mark;
+    }
 
 }

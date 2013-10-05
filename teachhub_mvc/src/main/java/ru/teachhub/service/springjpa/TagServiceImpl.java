@@ -13,24 +13,28 @@ import ru.teachhub.domain.Tag;
 import ru.teachhub.repository.TagRepository;
 import ru.teachhub.service.TagService;
 
-@Service("springJpaTagService")
+@Service( "springJpaTagService" )
 @Repository
 @Transactional
-public class TagServiceImpl implements TagService {
+public class TagServiceImpl
+    implements TagService
+{
 
-	@Autowired
-	private TagRepository tagRepository;
+    @Autowired
+    private TagRepository tagRepository;
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Tag> findAll() {
-		return Lists.newArrayList(tagRepository.findAll());
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Tag> findAll()
+    {
+        return Lists.newArrayList( tagRepository.findAll() );
+    }
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<Tag> findByTitle(String title) {
-		return tagRepository.findByTitle(title);
-	}
+    @Override
+    @Transactional( readOnly = true )
+    public List<Tag> findByTitle( String title )
+    {
+        return tagRepository.findByTitle( title );
+    }
 
 }
