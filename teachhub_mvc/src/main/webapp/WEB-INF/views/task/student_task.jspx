@@ -7,6 +7,15 @@
 	<jsp:output omit-xml-declaration="yes" />
 	
 	<div id="body" class="container">
+		<div class="row">
+			<div class="span12">
+				<h4>${unitTask.task.title}</h4>
+				<h5>${unitTask.task.description}</h5>
+				<c:if test="${unitTask.task.taskContent.taskType == 'CHOOSE_THE_CORRECT'}">
+					${unitTask.task.taskContent.taskType}
+				</c:if>
+			</div>
+		</div>
 	</div>
 	
 </div>
