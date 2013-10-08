@@ -1,5 +1,12 @@
 package ru.teachhub.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +24,8 @@ import ru.teachhub.service.AssignmentService;
 public class TaskController
 {
 
+    private static final String OPTIONS_SEPARATOR = ",";
+
     private static final Logger logger = LoggerFactory.getLogger( TaskController.class );
 
     @Autowired
@@ -28,11 +37,41 @@ public class TaskController
     {
         logger.info( "Task details" );
 
-        Assignment assignment = assignmentService.findById( id );
-
-        uiModel.addAttribute( "unitTask", assignment.getUnitTask() );
+        fillModel( id, uiModel );
 
         return "task/student_task";
     }
 
+    @RequestMapping( value = "/{id}", method = RequestMethod.POST )
+    public String submit( @PathVariable( "id" )
+    Long id, Model uiModel, HttpServletRequest httpServletRequest )
+    {
+        logger.info( "Submit task" );
+
+        String answer = httpServletRequest.getParameter( "option" );
+        if ( !isValidAnswer( answer ) )
+        {
+            fillModel( id, uiModel );
+            return "task/student_task";
+        }
+
+        return "lesson/student_lesson_details";
+    }
+
+    private boolean isValidAnswer( String answer )
+    {
+        return StringUtils.isNotBlank( answer );
+    }
+
+    private void fillModel( Long id, Model uiModel )
+    {
+        Assignment assignment = assignmentService.findById( id );
+        List<String> answerOptions =
+            new ArrayList<String>(
+                                   Arrays.asList( assignment.getUnitTask().getTask().getTaskContent().getResponseOption().split( OPTIONS_SEPARATOR ) ) );
+
+        uiModel.addAttribute( "unitTask", assignment.getUnitTask() );
+
+        uiModel.addAttribute( "options", answerOptions );
+    }
 }

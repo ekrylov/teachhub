@@ -2,20 +2,31 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:spring="http://www.springframework.org/tags" version="2.0">
-	
+
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
-	
+
+	<spring:message code="btn_submit_task" var="btnSubmitTask" />
+
 	<div id="body" class="container">
-		<div class="row">
-			<div class="span12">
-				<h4>${unitTask.task.title}</h4>
-				<h5>${unitTask.task.description}</h5>
-				<c:if test="${unitTask.task.taskContent.taskType == 'CHOOSE_THE_CORRECT'}">
-					${unitTask.task.taskContent.taskType}
+		<div class="span12">
+			<h4>${unitTask.task.title}</h4>
+			<h5>${unitTask.task.description}</h5>
+			<div class="hero-unit">
+				<c:if
+					test="${unitTask.task.taskContent.taskType == 'CHOOSE_THE_CORRECT'}">
+					<P>${unitTask.task.taskContent.question}</P>
+					<FORM method="post">
+						<c:forEach items="${options}" var="option" varStatus="theCount">
+							<LI><LABEL> <input type="radio"
+									value="${theCount.index + 1}" name="option" /> <span>${option}</span>
+							</LABEL></LI>
+						</c:forEach>
+						<BUTTON class="btn btn-large btn-primary" type="submit">${btnSubmitTask}</BUTTON>
+					</FORM>
 				</c:if>
 			</div>
 		</div>
 	</div>
-	
+
 </div>
