@@ -12,36 +12,32 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import ru.teachhub.domain.Role;
 import ru.teachhub.service.RoleService;
 
-public class RoleServiceImplTest
-    extends AbstractServiceImplTest
-{
+public class RoleServiceImplTest extends AbstractServiceImplTest {
 
     @Autowired
     private RoleService roleService;
 
-    private Role expectedAdminRole = new Role( "admin", "11111111" );
+    private Role expectedAdminRole = new Role("admin", "11111111");
 
-    private Role expectedTeacherRole = new Role( "teacher", "11110000" );
+    private Role expectedTeacherRole = new Role("teacher", "11110000");
 
-    private Role expectedStudentRole = new Role( "student", "00000000" );
+    private Role expectedStudentRole = new Role("student", "00000000");
 
     @Test
-    @DatabaseSetup( "RoleServiceImplTest.xml" )
-    public void findAll()
-        throws Exception
-    {
+    @DatabaseSetup("RoleServiceImplTest.xml")
+    public void findAll() throws Exception {
         List<Role> roles = roleService.findAll();
 
-        Assert.assertNotNull( roles );
-        Assert.assertEquals( 3, roles.size() );
+        Assert.assertNotNull(roles);
+        Assert.assertEquals(3, roles.size());
 
-        Role adminRole = roles.get( 0 );
-        Role teacherRole = roles.get( 1 );
-        Role studentRole = roles.get( 2 );
+        Role adminRole = roles.get(0);
+        Role teacherRole = roles.get(1);
+        Role studentRole = roles.get(2);
 
-        Assert.assertEquals( expectedAdminRole, adminRole );
-        Assert.assertEquals( expectedTeacherRole, teacherRole );
-        Assert.assertEquals( expectedStudentRole, studentRole );
+        Assert.assertEquals(expectedAdminRole, adminRole);
+        Assert.assertEquals(expectedTeacherRole, teacherRole);
+        Assert.assertEquals(expectedStudentRole, studentRole);
     }
 
     // @Test

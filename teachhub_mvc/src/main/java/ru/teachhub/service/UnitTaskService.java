@@ -5,9 +5,8 @@ import java.util.List;
 import ru.teachhub.domain.Unit;
 import ru.teachhub.domain.UnitTask;
 
-public interface UnitTaskService
-{
+public interface UnitTaskService {
 
-    List<UnitTask> findByUnit( Unit unit );
+    List<UnitTask> findByUnit(Unit unit);
 
 }

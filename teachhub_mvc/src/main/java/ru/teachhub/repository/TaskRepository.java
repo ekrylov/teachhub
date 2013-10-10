@@ -6,10 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import ru.teachhub.domain.Task;
 
-public interface TaskRepository
-    extends CrudRepository<Task, Long>
-{
+public interface TaskRepository extends CrudRepository<Task, Long> {
 
-    List<Task> findByTitle( String title );
+    List<Task> findByTitle(String title);
 
 }

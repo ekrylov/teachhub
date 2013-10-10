@@ -13,28 +13,24 @@ import ru.teachhub.domain.Task;
 import ru.teachhub.repository.TaskRepository;
 import ru.teachhub.service.TaskService;
 
-@Service( "springJpaTaskService" )
+@Service("springJpaTaskService")
 @Repository
 @Transactional
-public class TaskServiceImpl
-    implements TaskService
-{
+public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
 
     @Override
-    @Transactional( readOnly = true )
-    public List<Task> findAll()
-    {
-        return Lists.newArrayList( taskRepository.findAll() );
+    @Transactional(readOnly = true)
+    public List<Task> findAll() {
+        return Lists.newArrayList(taskRepository.findAll());
     }
 
     @Override
-    @Transactional( readOnly = true )
-    public List<Task> findByTitle( String title )
-    {
-        return taskRepository.findByTitle( title );
+    @Transactional(readOnly = true)
+    public List<Task> findByTitle(String title) {
+        return taskRepository.findByTitle(title);
     }
 
 }

@@ -7,17 +7,16 @@ import ru.teachhub.domain.Contact;
 import ru.teachhub.domain.Unit;
 import ru.teachhub.domain.UnitTask;
 
-public interface AssignmentService
-{
+public interface AssignmentService {
 
-    List<Assignment> findByContact( Contact contact );
+    List<Assignment> findByContact(Contact contact);
 
-    List<Assignment> findByUnitTask( UnitTask unitTask );
+    List<Assignment> findByUnitTask(UnitTask unitTask);
 
-    List<Assignment> findByContactAndUnitTask( Contact contact, UnitTask unitTask );
+    List<Assignment> findByContactAndUnitTask(Contact contact, UnitTask unitTask);
 
-    List<Assignment> findByContactAndUnitTaskUnit( Contact contact, Unit unit );
+    List<Assignment> findByContactAndUnitTaskUnit(Contact contact, Unit unit);
 
-    Assignment findById( Long id );
+    Assignment findById(Long id);
 
 }

@@ -12,21 +12,18 @@ import ru.teachhub.domain.UnitTask;
 import ru.teachhub.repository.UnitTaskRepository;
 import ru.teachhub.service.UnitTaskService;
 
-@Service( "springJpaUnitTaskService" )
+@Service("springJpaUnitTaskService")
 @Repository
 @Transactional
-public class UnitTaskServiceImpl
-    implements UnitTaskService
-{
+public class UnitTaskServiceImpl implements UnitTaskService {
 
     @Autowired
     private UnitTaskRepository unitTaskRepository;
 
     @Override
-    @Transactional( readOnly = true )
-    public List<UnitTask> findByUnit( Unit unit )
-    {
-        return unitTaskRepository.findByUnit( unit );
+    @Transactional(readOnly = true)
+    public List<UnitTask> findByUnit(Unit unit) {
+        return unitTaskRepository.findByUnit(unit);
     }
 
 }

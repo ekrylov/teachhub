@@ -19,59 +19,51 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ru.teachhub.domain.Assignment;
 import ru.teachhub.service.AssignmentService;
 
-@RequestMapping( "/task" )
+@RequestMapping("/task")
 @Controller
-public class TaskController
-{
+public class TaskController {
 
     private static final String OPTIONS_SEPARATOR = ",";
 
-    private static final Logger logger = LoggerFactory.getLogger( TaskController.class );
+    private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
 
     @Autowired
     private AssignmentService assignmentService;
 
-    @RequestMapping( value = "/{id}", method = RequestMethod.GET )
-    public String showTask( @PathVariable( "id" )
-    Long id, Model uiModel )
-    {
-        logger.info( "Task details" );
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String showTask(@PathVariable("id") Long id, Model uiModel) {
+        logger.info("Task details");
 
-        fillModel( id, uiModel );
+        fillModel(id, uiModel);
 
         return "task/student_task";
     }
 
-    @RequestMapping( value = "/{id}", method = RequestMethod.POST )
-    public String submit( @PathVariable( "id" )
-    Long id, Model uiModel, HttpServletRequest httpServletRequest )
-    {
-        logger.info( "Submit task" );
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public String submit(@PathVariable("id") Long id, Model uiModel, HttpServletRequest httpServletRequest) {
+        logger.info("Submit task");
 
-        String answer = httpServletRequest.getParameter( "option" );
-        if ( !isValidAnswer( answer ) )
-        {
-            fillModel( id, uiModel );
+        String answer = httpServletRequest.getParameter("option");
+        if (!isValidAnswer(answer)) {
+            fillModel(id, uiModel);
             return "task/student_task";
         }
 
         return "lesson/student_lesson_details";
     }
 
-    private boolean isValidAnswer( String answer )
-    {
-        return StringUtils.isNotBlank( answer );
+    private boolean isValidAnswer(String answer) {
+        return StringUtils.isNotBlank(answer);
     }
 
-    private void fillModel( Long id, Model uiModel )
-    {
-        Assignment assignment = assignmentService.findById( id );
+    private void fillModel(Long id, Model uiModel) {
+        Assignment assignment = assignmentService.findById(id);
         List<String> answerOptions =
-            new ArrayList<String>(
-                                   Arrays.asList( assignment.getUnitTask().getTask().getTaskContent().getResponseOption().split( OPTIONS_SEPARATOR ) ) );
+                new ArrayList<String>(Arrays.asList(assignment.getUnitTask().getTask().getTaskContent()
+                        .getResponseOption().split(OPTIONS_SEPARATOR)));
 
-        uiModel.addAttribute( "unitTask", assignment.getUnitTask() );
+        uiModel.addAttribute("unitTask", assignment.getUnitTask());
 
-        uiModel.addAttribute( "options", answerOptions );
+        uiModel.addAttribute("options", answerOptions);
     }
 }

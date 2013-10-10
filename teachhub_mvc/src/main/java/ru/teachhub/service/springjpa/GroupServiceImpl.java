@@ -13,28 +13,24 @@ import ru.teachhub.domain.Group;
 import ru.teachhub.repository.GroupRepository;
 import ru.teachhub.service.GroupService;
 
-@Service( "springJpaGroupService" )
+@Service("springJpaGroupService")
 @Repository
 @Transactional
-public class GroupServiceImpl
-    implements GroupService
-{
+public class GroupServiceImpl implements GroupService {
 
     @Autowired
     private GroupRepository groupRepository;
 
     @Override
-    @Transactional( readOnly = true )
-    public List<Group> findAll()
-    {
-        return Lists.newArrayList( groupRepository.findAll() );
+    @Transactional(readOnly = true)
+    public List<Group> findAll() {
+        return Lists.newArrayList(groupRepository.findAll());
     }
 
     @Override
-    @Transactional( readOnly = true )
-    public List<Group> findByTitle( String title )
-    {
-        return groupRepository.findByTitle( title );
+    @Transactional(readOnly = true)
+    public List<Group> findByTitle(String title) {
+        return groupRepository.findByTitle(title);
     }
 
 }

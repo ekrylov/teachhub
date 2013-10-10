@@ -14,10 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "assignment" )
-public class Assignment
-    implements Serializable
-{
+@Table(name = "assignment")
+public class Assignment implements Serializable {
 
     private static final long serialVersionUID = -4527240554939450246L;
 
@@ -31,68 +29,57 @@ public class Assignment
 
     private int mark;
 
-    public Assignment()
-    {
+    public Assignment() {
 
     }
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
-    @Column( name = "ID" )
-    public Long getId()
-    {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    public Long getId() {
         return id;
     }
 
-    public void setId( Long id )
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
     @ManyToOne
-    @JoinColumn( name = "CONTACT_ID", updatable = false, insertable = false )
-    public Contact getContact()
-    {
+    @JoinColumn(name = "CONTACT_ID", updatable = false, insertable = false)
+    public Contact getContact() {
         return contact;
     }
 
-    public void setContact( Contact contact )
-    {
+    public void setContact(Contact contact) {
         this.contact = contact;
     }
 
     @ManyToOne
-    @JoinColumn( name = "UNIT_TASK_ID", updatable = false, insertable = false )
-    public UnitTask getUnitTask()
-    {
+    @JoinColumn(name = "UNIT_TASK_ID", updatable = false, insertable = false)
+    public UnitTask getUnitTask() {
         return unitTask;
     }
 
-    public void setUnitTask( UnitTask unitTask )
-    {
+    public void setUnitTask(UnitTask unitTask) {
         this.unitTask = unitTask;
     }
 
-    @Column( name = "STATUS" )
-    @Enumerated( EnumType.STRING )
-    public TaskStatus getTaskStatus()
-    {
+    @Column(name = "STATUS")
+    @Enumerated(EnumType.STRING)
+    public TaskStatus getTaskStatus() {
         return taskStatus;
     }
 
-    public void setTaskStatus( TaskStatus taskStatus )
-    {
+    public void setTaskStatus(TaskStatus taskStatus) {
         this.taskStatus = taskStatus;
     }
 
-    @Column( name = "MARK" )
-    public int getMark()
-    {
+    @Column(name = "MARK")
+    public int getMark() {
         return mark;
     }
 
-    public void setMark( int mark )
-    {
+    public void setMark(int mark) {
         this.mark = mark;
     }
 

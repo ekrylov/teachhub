@@ -11,16 +11,14 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
-@ImportResource( "classpath:app-config.xml" )
-@ComponentScan( basePackages = { "ru.teachhub.service.springjpa" } )
-@Profile( "test" )
-public class ServiceTestConfig
-{
+@ImportResource("classpath:app-config.xml")
+@ComponentScan(basePackages = {"ru.teachhub.service.springjpa"})
+@Profile("test")
+public class ServiceTestConfig {
 
     @Bean
-    public DataSource dataSource()
-    {
-        return new EmbeddedDatabaseBuilder().setType( EmbeddedDatabaseType.H2 ).addScript( "classpath:schema.sql" ).build();
+    public DataSource dataSource() {
+        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript("classpath:schema.sql").build();
     }
 
     // @Bean(name = "databaseTester")

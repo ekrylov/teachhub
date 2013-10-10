@@ -15,13 +15,11 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 
 import ru.teachhub.test.config.ServiceTestConfig;
 
-@RunWith( SpringJUnit4ClassRunner.class )
-@ContextConfiguration( classes = { ServiceTestConfig.class } )
-@TestExecutionListeners( { DependencyInjectionTestExecutionListener.class, DbUnitTestExecutionListener.class } )
-@ActiveProfiles( "test" )
-public class AbstractServiceImplTest
-    extends AbstractTransactionalJUnit4SpringContextTests
-{
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {ServiceTestConfig.class})
+@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, DbUnitTestExecutionListener.class})
+@ActiveProfiles("test")
+public class AbstractServiceImplTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @PersistenceContext
     protected EntityManager em;

@@ -13,10 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "unit" )
-public class Unit
-    implements Serializable
-{
+@Table(name = "unit")
+public class Unit implements Serializable {
 
     private static final long serialVersionUID = -7202960531984082044L;
 
@@ -28,70 +26,58 @@ public class Unit
 
     private Set<UnitTask> unitTasks = new HashSet<UnitTask>();
 
-    public Unit()
-    {
+    public Unit() {
     }
 
-    public Unit( Long id, String title, String description )
-    {
-        this( title, description );
+    public Unit(Long id, String title, String description) {
+        this(title, description);
         this.id = id;
     }
 
-    public Unit( String title )
-    {
+    public Unit(String title) {
         this.title = title;
     }
 
-    public Unit( String title, String description )
-    {
+    public Unit(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
-    @Column( name = "ID" )
-    public Long getId()
-    {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    public Long getId() {
         return id;
     }
 
-    public void setId( Long id )
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Column( name = "TITLE" )
-    public String getTitle()
-    {
+    @Column(name = "TITLE")
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle( String title )
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    @Column( name = "DESCRIPTION" )
-    public String getDescription()
-    {
+    @Column(name = "DESCRIPTION")
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription( String description )
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    @OneToMany( mappedBy = "unit" )
-    public Set<UnitTask> getUnitTasks()
-    {
+    @OneToMany(mappedBy = "unit")
+    public Set<UnitTask> getUnitTasks() {
         return unitTasks;
     }
 
-    public void setUnitTasks( Set<UnitTask> unitTasks )
-    {
+    public void setUnitTasks(Set<UnitTask> unitTasks) {
         this.unitTasks = unitTasks;
     }
 

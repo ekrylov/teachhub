@@ -16,10 +16,8 @@ import javax.persistence.Table;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 @Entity
-@Table( name = "role" )
-public class Role
-    implements Serializable
-{
+@Table(name = "role")
+public class Role implements Serializable {
 
     private static final long serialVersionUID = -150501727785592132L;
 
@@ -31,89 +29,74 @@ public class Role
 
     private Set<Contact> contacts = new HashSet<Contact>();
 
-    public Role()
-    {
+    public Role() {
     }
 
-    public Role( String title, String privilege )
-    {
+    public Role(String title, String privilege) {
         this.title = title;
         this.privilege = privilege;
     }
 
-    public Role( Long id )
-    {
+    public Role(Long id) {
         super();
         this.id = id;
     }
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
-    @Column( name = "ID" )
-    public Long getId()
-    {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    public Long getId() {
         return id;
     }
 
-    public void setId( Long id )
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Column( name = "TITLE" )
-    public String getTitle()
-    {
+    @Column(name = "TITLE")
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle( String title )
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    @Column( name = "PRIVILEGE" )
-    public String getPrivilege()
-    {
+    @Column(name = "PRIVILEGE")
+    public String getPrivilege() {
         return privilege;
     }
 
-    public void setPrivilege( String privilege )
-    {
+    public void setPrivilege(String privilege) {
         this.privilege = privilege;
     }
 
-    @OneToMany( mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true )
-    public Set<Contact> getContacts()
-    {
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
+    public Set<Contact> getContacts() {
         return contacts;
     }
 
-    public void setContacts( Set<Contact> contacts )
-    {
+    public void setContacts(Set<Contact> contacts) {
         this.contacts = contacts;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Role Id: " + id + ", title: " + title + ", privilege: " + privilege;
     }
 
     @Override
-    public boolean equals( Object obj )
-    {
-        if ( !( obj instanceof Role ) )
-        {
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Role)) {
             return false;
         }
 
-        if ( this == obj )
-        {
+        if (this == obj) {
             return true;
         }
 
         Role otherRole = (Role) obj;
-        return new EqualsBuilder().append( title, otherRole.title ).append( privilege, otherRole.privilege ).isEquals();
+        return new EqualsBuilder().append(title, otherRole.title).append(privilege, otherRole.privilege).isEquals();
     }
 
 }

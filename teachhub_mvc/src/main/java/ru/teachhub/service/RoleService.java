@@ -4,11 +4,10 @@ import java.util.List;
 
 import ru.teachhub.domain.Role;
 
-public interface RoleService
-{
+public interface RoleService {
 
     List<Role> findAll();
 
-    List<Role> findByTitle( String title );
+    List<Role> findByTitle(String title);
 
 }
