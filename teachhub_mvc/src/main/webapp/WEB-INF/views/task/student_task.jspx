@@ -10,14 +10,14 @@
 
 	<div id="body" class="container">
 		<div class="span12">
-			<h4>${unitTask.task.title}</h4>
-			<h5>${unitTask.task.description}</h5>
+			<h4>${taskView.task.title}</h4>
+			<h5>${taskView.task.description}</h5>
 			<div class="hero-unit">
 				<c:if
-					test="${unitTask.task.taskContent.taskType == 'CHOOSE_THE_CORRECT'}">
-					<P>${unitTask.task.taskContent.question}</P>
+					test="${taskView.task.taskContent.taskType == 'MULTIPLE_CHOICE'}">
+					<P>${taskView.task.taskContent.question}</P>
 					<FORM method="post">
-						<c:forEach items="${options}" var="option" varStatus="theCount">
+						<c:forEach items="${taskView.options}" var="option" varStatus="theCount">
 							<LI><LABEL> <input type="radio"
 									value="${theCount.index + 1}" name="option" /> <span>${option}</span>
 							</LABEL></LI>

@@ -65,7 +65,7 @@ public class Assignment implements Serializable {
     }
 
     @Column(name = "STATUS")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     public TaskStatus getTaskStatus() {
         return taskStatus;
     }

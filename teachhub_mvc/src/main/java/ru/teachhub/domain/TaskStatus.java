@@ -14,4 +14,20 @@ public enum TaskStatus {
         return title;
     }
 
+    public boolean isNotOpened() {
+        return this == NOT_OPENED;
+    }
+
+    public boolean isRunning() {
+        return this == RUNNING;
+    }
+
+    public boolean isCompleted() {
+        return this == COMPLETED;
+    }
+
+    public boolean isRated() {
+        return this == RATED;
+    }
+
 }

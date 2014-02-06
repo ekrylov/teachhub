@@ -19,6 +19,7 @@ import ru.teachhub.domain.Unit;
 import ru.teachhub.service.AssignmentService;
 import ru.teachhub.service.ContactService;
 import ru.teachhub.service.UnitService;
+import ru.teachhub.view.lesson.LessonViewBean;
 
 @RequestMapping("/lesson")
 @Controller
@@ -65,8 +66,10 @@ public class LessonController {
         Contact contact = contactService.findById(1L);
 
         List<Assignment> assignments = assignmentService.findByContactAndUnitTaskUnit(contact, unit);
+        
+        LessonViewBean lessonViewBean = new LessonViewBean(assignments);
 
-        uiModel.addAttribute("assignments", assignments);
+        uiModel.addAttribute("lessonView", lessonViewBean);
 
         return "lesson/student_lesson_details";
     }

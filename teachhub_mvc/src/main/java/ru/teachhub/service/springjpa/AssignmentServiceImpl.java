@@ -52,4 +52,9 @@ public class AssignmentServiceImpl implements AssignmentService {
         return assignmentRepository.findOne(id);
     }
 
+    @Override
+    public Assignment save(Assignment assignment) {
+        return assignmentRepository.save(assignment);
+    }
+
 }
