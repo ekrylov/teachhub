@@ -13,6 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import ru.teachhub.domain.task.TaskStatus;
+
 @Entity
 @Table(name = "assignment")
 public class Assignment implements Serializable {
@@ -25,9 +30,11 @@ public class Assignment implements Serializable {
 
     private UnitTask unitTask;
 
-    private TaskStatus taskStatus;
+    private TaskStatus taskStatus = TaskStatus.NOT_DEFINED;
 
     private int mark;
+
+    private String answer;
 
     public Assignment() {
 
@@ -83,4 +90,32 @@ public class Assignment implements Serializable {
         this.mark = mark;
     }
 
+    @Column(name = "ANSWER")
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Assignment)) {
+            return false;
+        }
+
+        if (this == obj) {
+            return true;
+        }
+
+        Assignment otherAssignment = (Assignment) obj;
+        return new EqualsBuilder().append(id, otherAssignment.id).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(id).toHashCode();
+    }
+    
 }

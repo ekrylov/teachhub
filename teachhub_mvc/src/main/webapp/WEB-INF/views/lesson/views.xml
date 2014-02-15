@@ -9,4 +9,8 @@
         <put-attribute name="body"
             value="/WEB-INF/views/lesson/student_lesson_details.jspx" />
     </definition>
+    <definition extends="student_layout" name="lesson/student_lesson_error">
+        <put-attribute name="body"
+            value="/WEB-INF/views/lesson/student_lesson_error.jspx" />
+    </definition>
 </tiles-definitions>

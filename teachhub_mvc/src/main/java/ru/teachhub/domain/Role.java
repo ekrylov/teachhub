@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
 @Table(name = "role")
@@ -97,6 +98,11 @@ public class Role implements Serializable {
 
         Role otherRole = (Role) obj;
         return new EqualsBuilder().append(title, otherRole.title).append(privilege, otherRole.privilege).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(title).append(privilege).toHashCode();
     }
 
 }

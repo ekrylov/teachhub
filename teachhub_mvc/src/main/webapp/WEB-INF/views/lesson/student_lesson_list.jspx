@@ -11,6 +11,7 @@
 	<spring:message code="label_recommended_lesson"
 		var="labelRecommendedLesson" />
 	<spring:message code="bnt_start_lesson" var="bntStartLesson" />
+	<spring:message code="label_no_lesson" var="labelNoLessons" />
 
 	<spring:url value="/lesson" var="showLessonUrl" />
 
@@ -21,16 +22,23 @@
 				<a href="#" class="btn btn-primary">${bntChangeLevel}</a>
 				<div class="hero-unit">
 					<div class="list-group">
-						<c:forEach items="${lessons}" var="lesson">
-							<a href="${showLessonUrl}/${lesson.id}">
-								<h4>${lesson.title}</h4>
-								<p>${lesson.description}</p>
-							</a>
-						</c:forEach>
+						<c:choose>
+							<c:when test="${not empty lessons}">
+								<c:forEach items="${lessons}" var="lesson">
+									<a href="${showLessonUrl}/${lesson.id}">
+										<h4>${lesson.title}</h4>
+										<p>${lesson.description}</p>
+									</a>
+								</c:forEach>
+							</c:when>
+    						<c:otherwise>
+    							<h4>${labelNoLessons}</h4>
+    						</c:otherwise>
+    					</c:choose>
 					</div>
 				</div>
 			</div>
-			<div class="span6">
+			<!-- div class="span6">
 				<h4>${labelRecommendedLesson}</h4>
 				<a href="#" class="btn btn-primary">${bntStartLesson}</a>
 				<div class="hero-unit">
@@ -42,7 +50,7 @@
 						</a>
 					</div>
 				</div>
-			</div>
+			</div-->
 		</div>
 	</div>
 </div>

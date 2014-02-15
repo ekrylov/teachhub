@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
 @Table(name = "contact")
@@ -38,7 +39,7 @@ public class Contact implements Serializable {
 
     private Group group;
 
-    private Set<Assignment> assignment = new HashSet<Assignment>();
+    private Set<Assignment> assignments = new HashSet<Assignment>();
 
     public Contact() {
     }
@@ -120,12 +121,12 @@ public class Contact implements Serializable {
     }
 
     @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
-    public Set<Assignment> getAssignment() {
-        return assignment;
+    public Set<Assignment> getAssignments() {
+        return assignments;
     }
 
-    public void setAssignment(Set<Assignment> assignment) {
-        this.assignment = assignment;
+    public void setAssignments(Set<Assignment> assignments) {
+        this.assignments = assignments;
     }
 
     @Override
@@ -150,4 +151,9 @@ public class Contact implements Serializable {
                 .append(role, otherContact.role).isEquals();
     }
 
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(firstName).append(lastName).append(password).append(email).append(role)
+                .toHashCode();
+    }
 }

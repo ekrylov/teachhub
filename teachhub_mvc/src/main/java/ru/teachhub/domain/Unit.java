@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 @Entity
 @Table(name = "unit")
 public class Unit implements Serializable {
@@ -79,6 +82,25 @@ public class Unit implements Serializable {
 
     public void setUnitTasks(Set<UnitTask> unitTasks) {
         this.unitTasks = unitTasks;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Unit)) {
+            return false;
+        }
+
+        if (this == obj) {
+            return true;
+        }
+
+        Unit otherUnit = (Unit) obj;
+        return new EqualsBuilder().append(id, otherUnit.id).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(id).toHashCode();
     }
 
 }

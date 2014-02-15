@@ -1,8 +1,8 @@
-package ru.teachhub.domain;
+package ru.teachhub.domain.task;
 
 public enum TaskStatus {
 
-    NOT_OPENED("not opened"), RUNNING("running"), COMPLETED("completed"), RATED("rated");
+    NOT_DEFINED("not defined"), NOT_OPENED("not opened"), RUNNING("running"), COMPLETED("completed"), RATED("rated");
 
     private String title;
 

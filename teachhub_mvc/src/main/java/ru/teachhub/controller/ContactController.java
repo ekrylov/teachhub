@@ -1,6 +1,5 @@
 package ru.teachhub.controller;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -13,15 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ru.teachhub.domain.Contact;
-import ru.teachhub.domain.Group;
-import ru.teachhub.domain.Role;
 import ru.teachhub.service.ContactService;
 
 @RequestMapping("/contacts")
 @Controller
 public class ContactController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ContactController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ContactController.class);
 
     @Autowired
     MessageSource messageSource;
@@ -31,18 +28,14 @@ public class ContactController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model uiModel) {
-        logger.info("Listing contacts");
+        LOG.info("Listing contacts");
 
-        List<Contact> contacts = getFakeContacts(); // contactService.findAll();
+        List<Contact> contacts = contactService.findAll();
         uiModel.addAttribute("contacts", contacts);
 
-        logger.info("No. of contacts: " + contacts.size());
+        LOG.info("No. of contacts: " + contacts.size());
 
         return "contacts/list";
     }
 
-    private List<Contact> getFakeContacts() {
-        return Collections.singletonList(new Contact("Eugene", "Krylov", "krylloff", "kryll@list.ru", new Role(0L),
-                new Group("admin")));
-    }
 }

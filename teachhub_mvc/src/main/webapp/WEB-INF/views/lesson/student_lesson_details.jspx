@@ -8,37 +8,29 @@
 
 	<spring:url value="/task" var="showTaskUrl" />
 
-	<spring:message code="label_lesson_status"
-		var="labelLessonStatus" />
+	<spring:message code="label_lesson_status" var="labelLessonStatus" />
 
 	<div id="body" class="container">
 		<div class="row">
 			<div class="span12">
-				<c:choose>
-					<c:when test="${not empty lessonView.assignments}">
-						<h4>${lessonView.title}</h4>
-						<h5>${lessonView.description}</h5>
-						<div class="hero-unit">
-							<c:forEach items="${lessonView.assignments}" var="assignment">
-								<c:choose>
-									<c:when
-										test="${assignment.taskStatus == 'NOT_OPENED' || assignment.taskStatus == 'RUNNING'}">
-										<a href="${showTaskUrl}/${assignment.id}">
-											<h4>${assignment.unitTask.task.title}</h4>
-										</a>
-									</c:when>
-									<c:otherwise>
-										<h4>${assignment.unitTask.task.title}${assignment.mark}
-											points</h4>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							<h4>${labelLessonStatus} ${lessonView.lessonStatus.title}</h4>
-						</div>
-					</c:when>
-					<c:otherwise>
-					</c:otherwise>
-				</c:choose>
+				<h4>${lesson.title}</h4>
+				<h5>${lesson.description}</h5>
+				<div class="hero-unit">
+					<c:forEach items="${lesson.taskViewBeans}" var="taskViewBean">
+						<c:choose>
+							<c:when test="${taskViewBean.openable}">
+								<a href="${showTaskUrl}/${taskViewBean.assignment.id}">
+									<h4>${taskViewBean.assignment.unitTask.task.title}</h4>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<h4>${taskViewBean.assignment.unitTask.task.title}${taskViewBean.assignment.mark}
+									points</h4>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<h4>${labelLessonStatus}${lesson.lessonStatus.title}</h4>
+				</div>
 			</div>
 		</div>
 	</div>

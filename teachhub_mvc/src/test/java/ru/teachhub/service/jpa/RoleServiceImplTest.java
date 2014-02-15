@@ -4,6 +4,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,6 +26,7 @@ public class RoleServiceImplTest extends AbstractServiceImplTest {
 
     @Test
     @DatabaseSetup("RoleServiceImplTest.xml")
+    @Ignore
     public void findAll() throws Exception {
         List<Role> roles = roleService.findAll();
 

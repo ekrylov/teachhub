@@ -3,6 +3,7 @@ package ru.teachhub.service.jpa;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,6 +20,7 @@ import ru.teachhub.test.config.ServiceTestConfig;
 @ContextConfiguration(classes = {ServiceTestConfig.class})
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, DbUnitTestExecutionListener.class})
 @ActiveProfiles("test")
+@Ignore
 public class AbstractServiceImplTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @PersistenceContext

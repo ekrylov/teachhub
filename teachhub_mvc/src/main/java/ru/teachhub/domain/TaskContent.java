@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import ru.teachhub.domain.task.TaskType;
+
 @Entity
 @Table(name = "task_content")
 public class TaskContent implements Serializable {

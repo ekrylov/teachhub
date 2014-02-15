@@ -7,8 +7,6 @@
 	
 	<import resource="classpath:app-config.xml" />
 	
-	<context:component-scan base-package="ru.teachhub.service.springjpa"/>
-	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 </beans>

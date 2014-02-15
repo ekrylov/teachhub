@@ -36,7 +36,7 @@
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="ru.teachhub.service.springjpa"/>
+    <context:component-scan base-package="ru.teachhub.service.springjpa, ru.teachhub.domain.task"/>
     
     <jpa:repositories base-package="ru.teachhub.repository"
                       entity-manager-factory-ref="emf"

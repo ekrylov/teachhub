@@ -1,15 +1,18 @@
 package ru.teachhub.view.task;
 
-import ru.teachhub.domain.Assignment;
+import org.springframework.stereotype.Service;
 
+import ru.teachhub.domain.Assignment;
+import ru.teachhub.domain.task.TaskType;
+
+@Service("taskViewBeanFactory")
 public class TaskViewBeanFactory {
 
-    public static TaskViewBean createTaskViewBean(Assignment assignment) {
-        switch (assignment.getUnitTask().getTask().getTaskContent().getTaskType()) {
-            case MULTIPLE_CHOICE:
-                return new MultipleChoiceTaskViewBean(assignment);
-            default:
-                return new ErrorTaskViewBean(assignment);
+    public TaskViewBean createTaskViewBean(Assignment assignment) {
+        if (assignment.getUnitTask().getTask().getTaskContent().getTaskType() == TaskType.MULTIPLE_CHOICE) {
+            return new MultipleChoiceTaskViewBean(assignment);
+        } else {
+            return new ErrorTaskViewBean(assignment);
         }
     }
 

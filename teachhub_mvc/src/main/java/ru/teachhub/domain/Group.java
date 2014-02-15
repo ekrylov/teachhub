@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
 @Table(name = "CONTACT_GROUP")
@@ -70,7 +71,7 @@ public class Group implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Role)) {
+        if (!(obj instanceof Group)) {
             return false;
         }
 
@@ -78,8 +79,13 @@ public class Group implements Serializable {
             return true;
         }
 
-        Group otherRole = (Group) obj;
-        return new EqualsBuilder().append(title, otherRole.title).isEquals();
+        Group otherGroup = (Group) obj;
+        return new EqualsBuilder().append(title, otherGroup.title).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(title).toHashCode();
     }
 
 }
