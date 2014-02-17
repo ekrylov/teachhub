@@ -30,7 +30,7 @@ public class Assignment implements Serializable {
 
     private UnitTask unitTask;
 
-    private TaskStatus taskStatus = TaskStatus.NOT_DEFINED;
+    private TaskStatus taskStatus = TaskStatus.NOT_OPENED;
 
     private int mark;
 

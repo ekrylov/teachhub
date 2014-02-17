@@ -2,7 +2,7 @@ package ru.teachhub.domain.task;
 
 public enum TaskStatus {
 
-    NOT_DEFINED("not defined"), NOT_OPENED("not opened"), RUNNING("running"), COMPLETED("completed"), RATED("rated");
+    NOT_OPENED("not opened"), RUNNING("running"), COMPLETED("completed"), RATED("rated"), NOT_DEFINED("not defined");
 
     private String title;
 

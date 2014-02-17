@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ru.teachhub.domain.Assignment;
-import ru.teachhub.domain.TaskContent;
+import ru.teachhub.domain.Contact;
+import ru.teachhub.domain.Unit;
 import ru.teachhub.domain.task.TaskProvider;
 import ru.teachhub.domain.task.TaskStatus;
 import ru.teachhub.service.AssignmentService;
+import ru.teachhub.service.ContactService;
+import ru.teachhub.view.lesson.LessonViewBean;
 import ru.teachhub.view.task.TaskViewBean;
 
 @RequestMapping("/task")
@@ -35,6 +38,9 @@ public class TaskController {
 
     @Autowired
     private TaskProvider taskProvider;
+
+    @Autowired
+    private ContactService contactService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String showTask(@PathVariable("id") Long id, Model uiModel) {
@@ -54,34 +60,28 @@ public class TaskController {
         LOG.info("Submit task");
 
         Assignment assignment = assignmentService.findById(id);
+        Contact contact = contactService.findById(1L);
 
-        String answer = httpServletRequest.getParameter("option");
-
-        // if (!isValidAnswer(answer)) {
-        // uiModel.addAttribute(TASK_BEAN_NAME, taskViewBeanFactory.createTaskViewBean(assignment));
-        // return COMMON_TASK_BEAN_TEMPLATE;
-        // }
-
-        TaskContent taskContent = assignment.getUnitTask().getTask().getTaskContent();
-
-        // assignment.setMark(Integer.valueOf(answer) == taskContent.getCorrectAnswer() ? taskContent.getPoint() : 0);
-
-        assignment.setAnswer(answer);
+        assignment.setAnswer(httpServletRequest.getParameter("option"));
         assignment.setTaskStatus(TaskStatus.COMPLETED);
         assignmentService.save(assignment);
 
         List<Assignment> assignments =
-                assignmentService.findByContactAndUnitTaskUnit(assignment.getContact(), assignment.getUnitTask()
-                        .getUnit());
+                assignmentService.findByContactAndUnitTaskUnit(contact, assignment.getUnitTask().getUnit());
 
-        // LessonViewBean lessonViewBean = new LessonViewBean(assignments);
-        //
-        // uiModel.addAttribute("lessonView", lessonViewBean);
+        uiModel.addAttribute("lesson", createLessonViewBean(assignments));
 
         return "lesson/student_lesson_details";
     }
 
-    // private boolean isValidAnswer(String answer) {
-    // return StringUtils.isNotBlank(answer) && StringUtils.isNumeric(answer);
-    // }
+    private LessonViewBean createLessonViewBean(List<Assignment> assignments) {
+        Unit unit = assignments.get(0).getUnitTask().getUnit();
+
+        LessonViewBean lessonViewBean = new LessonViewBean(unit.getId(), unit.getTitle(), unit.getDescription());
+        for (Assignment assignment : assignments) {
+            lessonViewBean.addTaskViewBean(taskProvider.createTaskFactory(assignment).createTaskViewBean(assignment));
+        }
+
+        return lessonViewBean;
+    }
 }

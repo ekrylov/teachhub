@@ -6,25 +6,12 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 
-	<spring:message code="btn_submit_task" var="btnSubmitTask" />
-
 	<div id="body" class="container">
 		<div class="span12">
 			<h4>${taskView.task.title}</h4>
 			<h5>${taskView.task.description}</h5>
 			<div class="hero-unit">
-				<c:if
-					test="${taskView.task.taskContent.taskType == 'MULTIPLE_CHOICE'}">
-					<P>${taskView.task.taskContent.question}</P>
-					<FORM method="post">
-						<c:forEach items="${taskView.options}" var="option" varStatus="theCount">
-							<LI><LABEL> <input type="radio"
-									value="${theCount.index + 1}" name="option" /> <span>${option}</span>
-							</LABEL></LI>
-						</c:forEach>
-						<BUTTON class="btn btn-large btn-primary" type="submit">${btnSubmitTask}</BUTTON>
-					</FORM>
-				</c:if>
+				<jsp:include page="${taskView.template}" />
 			</div>
 		</div>
 	</div>
