@@ -11,10 +11,4 @@ public class UndefinedTaskFactory implements TaskFactory {
         return new UndefinedTaskViewBean(assignment);
     }
 
-    @Override
-    public TaskAnswer createTaskAnswer(Assignment assignment) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }

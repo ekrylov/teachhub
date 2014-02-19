@@ -97,67 +97,6 @@ public class LessonViewBean implements Assessable {
         return id;
     }
 
-    // private LessonStatus calculateStatus() {
-    // if (isRated()) {
-    // return LessonStatus.RATED;
-    // }
-    //
-    // if (isCompleted()) {
-    // return LessonStatus.COMPLETED;
-    // }
-    //
-    // if (isNotOpened()) {
-    // return LessonStatus.NOT_OPENED;
-    // }
-    //
-    // return LessonStatus.RUNNING;
-    // }
-    //
-    // /**
-    // * If ALL tasks are rated then the lesson is considered RATED
-    // *
-    // * @return RATED lesson status
-    // */
-    // private boolean isRated() {
-    // for (Assignment assignment : assignments) {
-    // if (!assignment.getTaskStatus().isRated()) {
-    // return false;
-    // }
-    // }
-    //
-    // return true;
-    // }
-    //
-    // /**
-    // * If ALL tasks are completed OR rated then the lesson is considered COMPLETED
-    // *
-    // * @return COMPLETED lesson status
-    // */
-    // private boolean isCompleted() {
-    // for (Assignment assignment : assignments) {
-    // if (!(assignment.getTaskStatus().isRated() || assignment.getTaskStatus().isCompleted())) {
-    // return false;
-    // }
-    // }
-    //
-    // return true;
-    // }
-    //
-    // /**
-    // * If ALL tasks are not opened then the lesson is considered NOT_OPENED
-    // *
-    // * @return NOT_OPENED lesson status
-    // */
-    // private boolean isNotOpened() {
-    // for (Assignment assignment : assignments) {
-    // if (!assignment.getTaskStatus().isNotOpened()) {
-    // return false;
-    // }
-    // }
-    //
-    // return true;
-    // }
-
     @Override
     public void doCheckIn(Assessor assessor) {
         lessonStatistics = assessor.assessLesson(this);

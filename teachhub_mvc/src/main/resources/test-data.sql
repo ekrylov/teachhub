@@ -18,6 +18,7 @@ insert into task_content (TASK_TYPE, QUESTION, RESPONSE_OPTION, CORRECT_ANSWER, 
 insert into task_content (TASK_TYPE, QUESTION, RESPONSE_OPTION, CORRECT_ANSWER, POINT) values (0, 'I shall never forget, as long as I live, the day when I first set _________ in London.', 'feet,steps,foot,legs', 3, 10);
 insert into task_content (TASK_TYPE, QUESTION, RESPONSE_OPTION, CORRECT_ANSWER, POINT) values (0, 'We had a heavenly day yesterday. We went to Stratford-on-Avon, the place where Shakespeare was born and died. It was a ________ day, for yesterday was April 23rd; that is St. George‘s Day – the saint of England – and that is the day on which Shakespeare was born, and also the day on which he died.', 'fitting,becoming,appropriate,suitable', 4, 10);
 insert into task_content (TASK_TYPE, QUESTION, RESPONSE_OPTION, CORRECT_ANSWER, POINT) values (0, 'Jack was full of energy and _____________. He built a house and a barn and a blacksmith shop.', 'invention,suggestion,idea,theory', 1, 10);
+insert into task_content (TASK_TYPE, QUESTION, RESPONSE_OPTION, CORRECT_ANSWER, POINT) values (1, 'Write a letter introducing yourself to a penpal.', '', 0, 10);
 
 insert into task (TASK_CONTENT_ID, TITLE, DESCRIPTION) values (1, 'Grammar and vocabulary - questions to choose a correct answer', 'Read the text with gaps. Enter the number of option you choose an answer.');
 insert into task (TASK_CONTENT_ID, TITLE, DESCRIPTION) values (2, 'Grammar and vocabulary - questions to choose a correct answer', 'Read the text with gaps. Enter the number of option you choose an answer.'); 
@@ -25,15 +26,19 @@ insert into task (TASK_CONTENT_ID, TITLE, DESCRIPTION) values (3, 'Grammar and v
 insert into task (TASK_CONTENT_ID, TITLE, DESCRIPTION) values (4, 'Grammar and vocabulary - questions to choose a correct answer', 'Read the text with gaps. Enter the number of option you choose an answer.'); 
 insert into task (TASK_CONTENT_ID, TITLE, DESCRIPTION) values (5, 'Grammar and vocabulary - questions to choose a correct answer', 'Read the text with gaps. Enter the number of option you choose an answer.');
 insert into task (TASK_CONTENT_ID, TITLE, DESCRIPTION) values (6, 'Grammar and vocabulary - questions to choose a correct answer', 'Read the text with gaps. Enter the number of option you choose an answer.');
+insert into task (TASK_CONTENT_ID, TITLE, DESCRIPTION) values (7, 'Grammar and vocabulary - questions to choose a correct answer', 'Read the text with gaps. Enter the number of option you choose an answer.');
+insert into task (TASK_CONTENT_ID, TITLE, DESCRIPTION) values (8, 'Grammar and vocabulary - questions to choose a correct answer', 'Read the text with gaps. Enter the number of option you choose an answer.');
+insert into task (TASK_CONTENT_ID, TITLE, DESCRIPTION) values (9, 'Write', 'Write task');
 
 insert into unit_task (UNIT_ID, TASK_ID) values (1, 1);
 insert into unit_task (UNIT_ID, TASK_ID) values (1, 2);
 insert into unit_task (UNIT_ID, TASK_ID) values (1, 3);
 insert into unit_task (UNIT_ID, TASK_ID) values (1, 4);
-insert into unit_task (UNIT_ID, TASK_ID) values (2, 3);
-insert into unit_task (UNIT_ID, TASK_ID) values (2, 4);
 insert into unit_task (UNIT_ID, TASK_ID) values (2, 5);
 insert into unit_task (UNIT_ID, TASK_ID) values (2, 6);
+insert into unit_task (UNIT_ID, TASK_ID) values (2, 7);
+insert into unit_task (UNIT_ID, TASK_ID) values (2, 8);
+insert into unit_task (UNIT_ID, TASK_ID) values (2, 9);
 
 insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 1, 0, 0, '');
 insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 2, 0, 0, '');
@@ -43,3 +48,4 @@ insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (
 insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 6, 0, 0, '');
 insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 7, 0, 0, '');
 insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 8, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 9, 0, 0, '');

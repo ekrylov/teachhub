@@ -10,10 +10,5 @@ public class MultipleChoiceTaskFactory implements TaskFactory {
     public TaskViewBean createTaskViewBean(Assignment assignment) {
         return new MultipleChoiceTaskViewBean(assignment);
     }
-    
-    @Override
-    public TaskAnswer createTaskAnswer(Assignment assignment) {
-        return new MultipleChoiceTaskAnswer(assignment);
-    }
 
 }

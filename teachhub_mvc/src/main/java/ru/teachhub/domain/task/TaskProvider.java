@@ -13,6 +13,8 @@ public class TaskProvider {
         switch (taskType) {
             case MULTIPLE_CHOICE:
                 return new MultipleChoiceTaskFactory();
+            case OPEN_QUESTION:
+                return new OpenQuestionTaskFactory();
             default:
                 return new UndefinedTaskFactory();
         }

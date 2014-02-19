@@ -6,7 +6,5 @@ import ru.teachhub.view.task.TaskViewBean;
 public interface TaskFactory {
 
     TaskViewBean createTaskViewBean(Assignment assignment);
-    
-    TaskAnswer createTaskAnswer(Assignment assignment);
 
 }

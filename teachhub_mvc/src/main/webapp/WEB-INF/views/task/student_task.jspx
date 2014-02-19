@@ -5,7 +5,7 @@
 
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
-
+	
 	<div id="body" class="container">
 		<div class="span12">
 			<h4>${taskView.task.title}</h4>

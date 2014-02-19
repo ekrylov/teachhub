@@ -11,9 +11,4 @@ public class OpenQuestionTaskFactory implements TaskFactory {
         return new OpenQuestionTaskViewBean(assignment);
     }
 
-    @Override
-    public TaskAnswer createTaskAnswer(Assignment assignment) {
-        return new OpenQuestionTaskAnswer(assignment);
-    }
-
 }
