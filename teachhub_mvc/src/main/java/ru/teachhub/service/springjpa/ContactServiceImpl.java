@@ -52,6 +52,12 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Contact findByUserName(String userName) {
+        return contactRepository.findByUserName(userName);
+    }
+
+    @Override
     public void save(Contact contact) {
         contactRepository.save(contact);
     }

@@ -31,6 +31,8 @@ public class Contact implements Serializable {
 
     private String lastName;
 
+    private String userName;
+
     private String password;
 
     private String email;
@@ -80,6 +82,15 @@ public class Contact implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Column(name = "USER_NAME")
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Column(name = "PASSWORD")

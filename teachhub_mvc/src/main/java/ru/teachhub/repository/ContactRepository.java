@@ -15,4 +15,6 @@ public interface ContactRepository extends CrudRepository<Contact, Long> {
 
     List<Contact> findByRole(Role role);
 
+    Contact findByUserName(String userName);
+
 }

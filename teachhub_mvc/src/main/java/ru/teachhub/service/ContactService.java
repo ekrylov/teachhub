@@ -16,6 +16,8 @@ public interface ContactService {
     List<Contact> findByRole(Role role);
 
     Contact findById(Long id);
+    
+    Contact findByUserName(String userName);
 
     void save(Contact contact);
 
