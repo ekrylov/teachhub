@@ -53,6 +53,12 @@ public class AssignmentServiceImpl implements AssignmentService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Assignment findByContactAndId(Contact contact, Long id) {
+        return assignmentRepository.findByContactAndId(contact, id);
+    }
+
+    @Override
     public Assignment save(Assignment assignment) {
         return assignmentRepository.save(assignment);
     }

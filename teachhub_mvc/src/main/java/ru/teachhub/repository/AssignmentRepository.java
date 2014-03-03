@@ -18,5 +18,7 @@ public interface AssignmentRepository extends CrudRepository<Assignment, Long> {
     List<Assignment> findByContactAndUnitTask(Contact contact, UnitTask unitTask);
 
     List<Assignment> findByContactAndUnitTaskUnit(Contact contact, Unit unit);
+    
+    Assignment findByContactAndId(Contact contact, Long id);
 
 }

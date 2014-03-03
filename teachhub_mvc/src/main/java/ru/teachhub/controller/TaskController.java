@@ -43,7 +43,7 @@ public class TaskController {
 
     @Autowired
     private ContactService contactService;
-    
+
     @Autowired
     private SpringSecurityUserContext springSecurityUserContext;
 
@@ -52,7 +52,12 @@ public class TaskController {
     public String showTask(@PathVariable("id") Long id, Model uiModel) {
         LOG.info("Task details");
 
-        Assignment assignment = assignmentService.findById(id);
+        Contact contact = springSecurityUserContext.getContact();
+        Assignment assignment = assignmentService.findByContactAndId(contact, id);
+
+        if (assignment == null) {
+            return "task/student_task_error";
+        }
 
         TaskViewBean taskViewBean = taskProvider.createTaskFactory(assignment).createTaskViewBean(assignment);
         taskViewBean.changeStatus(TaskStatus.RUNNING);

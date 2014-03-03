@@ -6,12 +6,12 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 
-	<spring:message code="label_lesson_wrong_id" var="lessonWrongId" />
+	<spring:message code="label_task_wrong_id" var="taskWrongId" />
 
 	<div id="body" class="container">
 		<div class="row">
 			<div class="span12">
-				<h4>${lessonWrongId}</h4>
+				<h4>${taskWrongId}</h4>
 			</div>
 		</div>
 	</div>

@@ -19,6 +19,8 @@ public interface AssignmentService {
 
     Assignment findById(Long id);
     
+    Assignment findByContactAndId(Contact contact, Long id);
+    
     Assignment save(Assignment assignment);
 
 }

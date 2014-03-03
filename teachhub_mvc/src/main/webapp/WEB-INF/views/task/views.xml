@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="student_layout" name="task/student_task">
-        <put-attribute name="body"
-            value="/WEB-INF/views/task/student_task.jspx" />
-    </definition>
+	<definition extends="student_layout" name="task/student_task">
+		<put-attribute name="body"
+			value="/WEB-INF/views/task/student_task.jspx" />
+	</definition>
+	<definition extends="student_layout" name="task/student_task_error">
+		<put-attribute name="body"
+			value="/WEB-INF/views/task/student_task_error.jspx" />
+	</definition>
 </tiles-definitions>
