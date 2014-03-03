@@ -10,12 +10,14 @@ import java.util.Map.Entry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import ru.teachhub.authentication.SpringSecurityUserContext;
 import ru.teachhub.domain.Assignment;
 import ru.teachhub.domain.Contact;
 import ru.teachhub.domain.Unit;
@@ -42,23 +44,28 @@ public class LessonController {
 
     @Autowired
     private TaskProvider taskProvider;
+    
+    @Autowired
+    private SpringSecurityUserContext springSecurityUserContext;
 
     @RequestMapping(method = RequestMethod.GET)
+    @PreAuthorize("hasRole('student')")
     public String lessons(Model uiModel) {
         LOG.info("Listing lessons");
 
-        Contact contact = contactService.findById(1L);
+        Contact contact = springSecurityUserContext.getContact();
         uiModel.addAttribute("lessons", createLessonViewBeans(groupLessons(contact.getAssignments())));
 
         return "lesson/student_lesson_list";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('student')")
     public String showLessonDetails(@PathVariable("id") Long id, Model uiModel) {
         LOG.info("Lesson details");
 
         Unit unit = unitService.findById(id);
-        Contact contact = contactService.findById(1L);
+        Contact contact = springSecurityUserContext.getContact();
 
         List<Assignment> assignments = assignmentService.findByContactAndUnitTaskUnit(contact, unit);
 

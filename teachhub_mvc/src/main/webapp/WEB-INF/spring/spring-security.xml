@@ -13,20 +13,20 @@
 		<!-- intercept-url pattern="/*" access="permitAll" / -->
 
 		<intercept-url pattern="/login" access="permitAll" />
-		<intercept-url pattern="/logout" access="permitAll" />
+		<!-- intercept-url pattern="/logout" access="permitAll" /-->
 
-		<intercept-url pattern="/lesson" access="hasRole('admin')" />
+		<!-- intercept-url pattern="/lesson/**" access="hasRole('admin')" /-->
 
 		<form-login login-page="/login" authentication-failure-url="/failure"
 			default-target-url="/lesson" />
 
 		<access-denied-handler error-page="/denied" />
 
-		<logout logout-success-url="/lesson" />
+		<logout logout-success-url="/login" />
 	</http>
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="customUserDetailsService" />
+		<authentication-provider ref="contactUserAuthenticationProvider" />
 	</authentication-manager>
 
 </beans:beans>

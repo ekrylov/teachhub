@@ -6,6 +6,8 @@ insert into contact_group (TITLE) values ('AB-02-1');
 
 insert into contact (FIRST_NAME, LAST_NAME, USER_NAME, PASSWORD, EMAIL, ROLE_ID, GROUP_ID) values ('Eugene', 'Krylov', 'kryll', 'pass1', 'ekrylov@mail.com', 1, 1);
 insert into contact (FIRST_NAME, LAST_NAME, USER_NAME, PASSWORD, EMAIL, ROLE_ID, GROUP_ID) values ('Elena', 'Krylova', 'lena', 'pass2', 'ekrylova@mail.com', 2, 1);
+insert into contact (FIRST_NAME, LAST_NAME, USER_NAME, PASSWORD, EMAIL, ROLE_ID, GROUP_ID) values ('Chukcha', 'Chukcha', 'chukcha1', 'pass3', 'chukcha1@mail.com', 3, 1);
+insert into contact (FIRST_NAME, LAST_NAME, USER_NAME, PASSWORD, EMAIL, ROLE_ID, GROUP_ID) values ('Chukcha', 'Chukcha', 'chukcha2', 'pass4', 'chukcha2@mail.com', 3, 1);
 
 insert into unit (TITLE, DESCRIPTION) values ('Lesson Present Simple', 'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.');
 insert into unit (TITLE, DESCRIPTION) values ('Lesson Present Continues', 'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.');
@@ -40,12 +42,17 @@ insert into unit_task (UNIT_ID, TASK_ID) values (2, 7);
 insert into unit_task (UNIT_ID, TASK_ID) values (2, 8);
 insert into unit_task (UNIT_ID, TASK_ID) values (2, 9);
 
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 1, 0, 0, '');
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 2, 0, 0, '');
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 3, 0, 0, '');
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 4, 0, 0, '');
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 5, 0, 0, '');
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 6, 0, 0, '');
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 7, 0, 0, '');
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 8, 0, 0, '');
-insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (1, 9, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (3, 1, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (3, 2, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (3, 3, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (3, 4, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (3, 5, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (3, 6, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (3, 7, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (3, 8, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (3, 9, 0, 0, '');
+
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (4, 1, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (4, 2, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (4, 3, 0, 0, '');
+insert into assignment (CONTACT_ID, UNIT_TASK_ID, STATUS, MARK, ANSWER) values (4, 4, 0, 0, '');

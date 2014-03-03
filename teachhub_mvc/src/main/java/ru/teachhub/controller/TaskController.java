@@ -7,12 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import ru.teachhub.authentication.SpringSecurityUserContext;
 import ru.teachhub.domain.Assignment;
 import ru.teachhub.domain.Contact;
 import ru.teachhub.domain.Unit;
@@ -41,8 +43,12 @@ public class TaskController {
 
     @Autowired
     private ContactService contactService;
+    
+    @Autowired
+    private SpringSecurityUserContext springSecurityUserContext;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('student')")
     public String showTask(@PathVariable("id") Long id, Model uiModel) {
         LOG.info("Task details");
 
@@ -56,11 +62,12 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('student')")
     public String submit(@PathVariable("id") Long id, Model uiModel, HttpServletRequest httpServletRequest) {
         LOG.info("Submit task");
 
         Assignment assignment = assignmentService.findById(id);
-        Contact contact = contactService.findById(1L);
+        Contact contact = springSecurityUserContext.getContact();
 
         assignment.setAnswer(httpServletRequest.getParameter("option"));
         assignment.setTaskStatus(TaskStatus.COMPLETED);
