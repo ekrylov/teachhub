@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="span6">
 				<h4>${labelCoreLessons}</h4>
-				<a href="#" class="btn btn-primary">${bntChangeLevel}</a>
+				<p/>
 				<div class="hero-unit">
 					<div class="list-group">
 						<c:choose>
@@ -38,19 +38,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- div class="span6">
-				<h4>${labelRecommendedLesson}</h4>
-				<a href="#" class="btn btn-primary">${bntStartLesson}</a>
-				<div class="hero-unit">
-					<div class="list-group">
-						<a href="${showLessonUrl}/${recommendedLesson.id}"
-							class="list-group-item">
-							<h4 class="list-group-item-heading">${recommendedLesson.title}</h4>
-							<p class="list-group-item-text">${recommendedLesson.description}</p>
-						</a>
-					</div>
-				</div>
-			</div-->
 		</div>
 	</div>
 </div>

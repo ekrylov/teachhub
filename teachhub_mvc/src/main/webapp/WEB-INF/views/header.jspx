@@ -9,12 +9,13 @@
 	<spring:message code="label_welcome" var="labelWelcome" />
 	<spring:url var="logoutUrl" value="/j_spring_security_logout" />
 
-	<div id="userinfo">
+	<div id="userinfo" class="container">
 		<sec:authorize access="authenticated">
-        	${labelWelcome} 
-            <sec:authentication property="principal.firstName" />
-			<br />
-			<a href="${logoutUrl}">${labelLogout}</a>
+			<h4>${labelWelcome},<sec:authentication
+					property="principal.firstName" />
+			</h4>
+			<p />
+			<a href="${logoutUrl}"><h5>${labelLogout}</h5></a>
 		</sec:authorize>
 	</div>
 
