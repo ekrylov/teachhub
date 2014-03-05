@@ -41,7 +41,9 @@ public class Contact implements Serializable {
 
     private Group group;
 
-    private Set<Assignment> assignments = new HashSet<Assignment>();
+    private Set<Assignment> studentAssignments = new HashSet<Assignment>();
+
+    private Set<Assignment> teacherAssignments = new HashSet<Assignment>();
 
     public Contact() {
     }
@@ -131,13 +133,22 @@ public class Contact implements Serializable {
         this.group = group;
     }
 
-    @OneToMany(mappedBy = "contact", fetch = FetchType.EAGER)
-    public Set<Assignment> getAssignments() {
-        return assignments;
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    public Set<Assignment> getStudentAssignments() {
+        return studentAssignments;
     }
 
-    public void setAssignments(Set<Assignment> assignments) {
-        this.assignments = assignments;
+    public void setStudentAssignments(Set<Assignment> studentAssignments) {
+        this.studentAssignments = studentAssignments;
+    }
+
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
+    public Set<Assignment> getTeacherAssignments() {
+        return teacherAssignments;
+    }
+
+    public void setTeacherAssignments(Set<Assignment> teacherAssignments) {
+        this.teacherAssignments = teacherAssignments;
     }
 
     @Override

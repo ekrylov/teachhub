@@ -8,7 +8,9 @@
 
 	<spring:url value="/task" var="showTaskUrl" />
 
-	<spring:message code="label_lesson_status" var="labelLessonStatus" />
+	<spring:message code="label_lesson_statistics"
+		arguments="${lesson.lessonStatistics.completedTasks}, ${lesson.lessonStatistics.ratedTasks}, ${lesson.lessonStatistics.commonNumberOfTasks}, ${lesson.lessonStatistics.currentPoints}, ${lesson.lessonStatistics.maxPoints}"
+		var="labelLessonStatus" />
 
 	<div id="body" class="container">
 		<div class="row">
@@ -24,12 +26,12 @@
 								</a>
 							</c:when>
 							<c:otherwise>
-								<h4>${taskViewBean.assignment.unitTask.task.title}${taskViewBean.assignment.mark}
-									points</h4>
+								<h4>${taskViewBean.assignment.unitTask.task.title}</h4>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
-					<h4>${labelLessonStatus}${lesson.lessonStatus.title}</h4>
+					<p />
+					<h3>${labelLessonStatus}</h3>
 				</div>
 			</div>
 		</div>

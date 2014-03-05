@@ -56,7 +56,7 @@ public class LessonControllerTest {
         model = new BindingAwareModelMap();
         contact = new Contact();
         unit = new Unit();
-        contact.setAssignments(createSet5Assignments());
+        contact.setStudentAssignments(createSet5Assignments());
         assignments = createList5Assignments();
         taskProvider = new TaskProvider();
 

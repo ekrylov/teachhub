@@ -34,6 +34,8 @@ public class TaskController {
     private static final String TASK_BEAN_NAME = "taskView";
 
     private static final String COMMON_TASK_BEAN_TEMPLATE = "task/student_task";
+    
+    private static final String ERROR_TASK_BEAN_TEMPLATE = "task/student_task_error";
 
     @Autowired
     private AssignmentService assignmentService;
@@ -56,7 +58,7 @@ public class TaskController {
         Assignment assignment = assignmentService.findByContactAndId(contact, id);
 
         if (assignment == null) {
-            return "task/student_task_error";
+            return ERROR_TASK_BEAN_TEMPLATE;
         }
 
         TaskViewBean taskViewBean = taskProvider.createTaskFactory(assignment).createTaskViewBean(assignment);
@@ -71,8 +73,12 @@ public class TaskController {
     public String submit(@PathVariable("id") Long id, Model uiModel, HttpServletRequest httpServletRequest) {
         LOG.info("Submit task");
 
-        Assignment assignment = assignmentService.findById(id);
         Contact contact = springSecurityUserContext.getContact();
+        Assignment assignment = assignmentService.findByContactAndId(contact, id);
+        
+        if (assignment == null) {
+            return ERROR_TASK_BEAN_TEMPLATE;
+        }
 
         assignment.setAnswer(httpServletRequest.getParameter("option"));
         assignment.setTaskStatus(TaskStatus.COMPLETED);
@@ -82,8 +88,8 @@ public class TaskController {
                 assignmentService.findByContactAndUnitTaskUnit(contact, assignment.getUnitTask().getUnit());
 
         uiModel.addAttribute("lesson", createLessonViewBean(assignments));
-
-        return "lesson/student_lesson_details";
+        
+        return "redirect:/lesson/" + assignment.getUnitTask().getUnit().getId();
     }
 
     private LessonViewBean createLessonViewBean(List<Assignment> assignments) {

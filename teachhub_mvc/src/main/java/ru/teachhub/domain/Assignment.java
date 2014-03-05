@@ -26,7 +26,9 @@ public class Assignment implements Serializable {
 
     private Long id;
 
-    private Contact contact;
+    private Contact student;
+    
+    private Contact teacher;
 
     private UnitTask unitTask;
 
@@ -52,13 +54,23 @@ public class Assignment implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "CONTACT_ID", updatable = false, insertable = false)
-    public Contact getContact() {
-        return contact;
+    @JoinColumn(name = "STUDENT_ID", updatable = false, insertable = false)
+    public Contact getStudent() {
+        return student;
     }
 
-    public void setContact(Contact contact) {
-        this.contact = contact;
+    public void setStudent(Contact student) {
+        this.student = student;
+    }
+    
+    @ManyToOne
+    @JoinColumn(name = "TEACHER_ID", updatable = false, insertable = false)
+    public Contact getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Contact teacher) {
+        this.teacher = teacher;
     }
 
     @ManyToOne

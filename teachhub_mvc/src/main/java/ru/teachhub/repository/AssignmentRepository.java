@@ -11,14 +11,14 @@ import ru.teachhub.domain.UnitTask;
 
 public interface AssignmentRepository extends CrudRepository<Assignment, Long> {
 
-    List<Assignment> findByContact(Contact contact);
+    List<Assignment> findByStudent(Contact student);
 
     List<Assignment> findByUnitTask(UnitTask unitTask);
 
-    List<Assignment> findByContactAndUnitTask(Contact contact, UnitTask unitTask);
+    List<Assignment> findByStudentAndUnitTask(Contact student, UnitTask unitTask);
 
-    List<Assignment> findByContactAndUnitTaskUnit(Contact contact, Unit unit);
-    
-    Assignment findByContactAndId(Contact contact, Long id);
+    List<Assignment> findByStudentAndUnitTaskUnit(Contact student, Unit unit);
+
+    Assignment findByStudentAndId(Contact student, Long id);
 
 }

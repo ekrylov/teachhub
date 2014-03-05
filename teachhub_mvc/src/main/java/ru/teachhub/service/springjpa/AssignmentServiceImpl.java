@@ -25,7 +25,7 @@ public class AssignmentServiceImpl implements AssignmentService {
     @Override
     @Transactional(readOnly = true)
     public List<Assignment> findByContact(Contact contact) {
-        return assignmentRepository.findByContact(contact);
+        return assignmentRepository.findByStudent(contact);
     }
 
     @Override
@@ -37,13 +37,13 @@ public class AssignmentServiceImpl implements AssignmentService {
     @Override
     @Transactional(readOnly = true)
     public List<Assignment> findByContactAndUnitTask(Contact contact, UnitTask unitTask) {
-        return assignmentRepository.findByContactAndUnitTask(contact, unitTask);
+        return assignmentRepository.findByStudentAndUnitTask(contact, unitTask);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Assignment> findByContactAndUnitTaskUnit(Contact contact, Unit unit) {
-        return assignmentRepository.findByContactAndUnitTaskUnit(contact, unit);
+        return assignmentRepository.findByStudentAndUnitTaskUnit(contact, unit);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class AssignmentServiceImpl implements AssignmentService {
     @Override
     @Transactional(readOnly = true)
     public Assignment findByContactAndId(Contact contact, Long id) {
-        return assignmentRepository.findByContactAndId(contact, id);
+        return assignmentRepository.findByStudentAndId(contact, id);
     }
 
     @Override

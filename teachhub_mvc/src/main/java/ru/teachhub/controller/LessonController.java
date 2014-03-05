@@ -44,7 +44,7 @@ public class LessonController {
 
     @Autowired
     private TaskProvider taskProvider;
-    
+
     @Autowired
     private SpringSecurityUserContext springSecurityUserContext;
 
@@ -54,7 +54,7 @@ public class LessonController {
         LOG.info("Listing lessons");
 
         Contact contact = springSecurityUserContext.getContact();
-        uiModel.addAttribute("lessons", createLessonViewBeans(groupLessons(contact.getAssignments())));
+        uiModel.addAttribute("lessons", createLessonViewBeans(groupLessons(contact.getStudentAssignments())));
 
         return "lesson/student_lesson_list";
     }
