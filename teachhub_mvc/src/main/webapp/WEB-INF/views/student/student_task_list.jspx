@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0">
+
+	<spring:url value="/student" var="showStudentTaskUrl" />
+
+	<div id="body" class="container">
+		<div class="row">
+			<div class="span12">
+				<div class="hero-unit">
+					<c:forEach items="${tasks}" var="taskViewBean">
+						<c:choose>
+							<c:when test="${taskViewBean.openable}">
+								<a
+									href="${showStudentTaskUrl}/${taskViewBean.assignment.student.id}/${taskViewBean.assignment.id}">
+									<h4>${taskViewBean.assignment.unitTask.task.title}</h4>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<h4>${taskViewBean.assignment.unitTask.task.title}</h4>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

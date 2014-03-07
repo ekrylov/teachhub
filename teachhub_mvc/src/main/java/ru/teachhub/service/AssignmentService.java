@@ -9,7 +9,9 @@ import ru.teachhub.domain.UnitTask;
 
 public interface AssignmentService {
 
-    List<Assignment> findByContact(Contact contact);
+    List<Assignment> findByStudent(Contact student);
+    
+    List<Assignment> findByTeacherAndStudent(Contact teacher, Contact student);
 
     List<Assignment> findByUnitTask(UnitTask unitTask);
 
@@ -18,8 +20,6 @@ public interface AssignmentService {
     List<Assignment> findByContactAndUnitTaskUnit(Contact contact, Unit unit);
 
     Assignment findById(Long id);
-    
-    Assignment findByContactAndId(Contact contact, Long id);
     
     Assignment save(Assignment assignment);
 

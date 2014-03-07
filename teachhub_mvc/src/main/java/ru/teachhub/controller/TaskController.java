@@ -34,7 +34,7 @@ public class TaskController {
     private static final String TASK_BEAN_NAME = "taskView";
 
     private static final String COMMON_TASK_BEAN_TEMPLATE = "task/student_task";
-    
+
     private static final String ERROR_TASK_BEAN_TEMPLATE = "task/student_task_error";
 
     @Autowired
@@ -54,10 +54,10 @@ public class TaskController {
     public String showTask(@PathVariable("id") Long id, Model uiModel) {
         LOG.info("Task details");
 
-        Contact contact = springSecurityUserContext.getContact();
-        Assignment assignment = assignmentService.findByContactAndId(contact, id);
+        Contact student = springSecurityUserContext.getContact();
+        Assignment assignment = assignmentService.findById(id);
 
-        if (assignment == null) {
+        if (!assignment.getStudent().equals(student)) {
             return ERROR_TASK_BEAN_TEMPLATE;
         }
 
@@ -73,10 +73,10 @@ public class TaskController {
     public String submit(@PathVariable("id") Long id, Model uiModel, HttpServletRequest httpServletRequest) {
         LOG.info("Submit task");
 
-        Contact contact = springSecurityUserContext.getContact();
-        Assignment assignment = assignmentService.findByContactAndId(contact, id);
-        
-        if (assignment == null) {
+        Contact student = springSecurityUserContext.getContact();
+        Assignment assignment = assignmentService.findById(id);
+
+        if (!assignment.getStudent().equals(student)) {
             return ERROR_TASK_BEAN_TEMPLATE;
         }
 
@@ -85,10 +85,10 @@ public class TaskController {
         assignmentService.save(assignment);
 
         List<Assignment> assignments =
-                assignmentService.findByContactAndUnitTaskUnit(contact, assignment.getUnitTask().getUnit());
+                assignmentService.findByContactAndUnitTaskUnit(student, assignment.getUnitTask().getUnit());
 
         uiModel.addAttribute("lesson", createLessonViewBean(assignments));
-        
+
         return "redirect:/lesson/" + assignment.getUnitTask().getUnit().getId();
     }
 

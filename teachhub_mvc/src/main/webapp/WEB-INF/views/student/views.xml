@@ -5,4 +5,8 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/student/student_list.jspx" />
 	</definition>
+	<definition extends="student_layout" name="student/student_task_list">
+		<put-attribute name="body"
+			value="/WEB-INF/views/student/student_task_list.jspx" />
+	</definition>
 </tiles-definitions>

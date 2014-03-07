@@ -13,12 +13,12 @@ public interface AssignmentRepository extends CrudRepository<Assignment, Long> {
 
     List<Assignment> findByStudent(Contact student);
 
+    List<Assignment> findByTeacherAndStudent(Contact teacher, Contact student);
+
     List<Assignment> findByUnitTask(UnitTask unitTask);
 
     List<Assignment> findByStudentAndUnitTask(Contact student, UnitTask unitTask);
 
     List<Assignment> findByStudentAndUnitTaskUnit(Contact student, Unit unit);
-
-    Assignment findByStudentAndId(Contact student, Long id);
 
 }

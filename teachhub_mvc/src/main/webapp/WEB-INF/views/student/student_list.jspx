@@ -4,13 +4,14 @@
 	xmlns:spring="http://www.springframework.org/tags" version="2.0">
 
 	<spring:message code="label_no_student" var="labelNoStudents" />
+	<spring:message code="label_student" var="labelStudents" />
 
 	<spring:url value="/student" var="showStudentUrl" />
 
 	<div id="body" class="container">
 		<div class="row">
 			<div class="span6">
-				<h4>labelCoreLessons</h4>
+				<h4>${labelStudents}</h4>
 				<p />
 				<div class="hero-unit">
 					<div class="list-group">
